@@ -7,20 +7,20 @@
 
 \documentclass[12pt]{article}
 
-\usepackage{translationstyle} % 引用自定义布局
+\usepackage{style/translationstyle} % 引用自定义布局
 
 \begin{document}
 %header
-% \input{sections/header}
-
-%summary
-\input{sections/summary}
+\input{sections/setup}
 
 %-------------------------------------------------------
 % Contents
-% \newpage \tableofcontents \newpage
-% \setcounter{page}{1}
-% \rhead{Page \thepage\ of \pageref{LastPage}}
+\newpage \tableofcontents \newpage
+\setcounter{page}{1}
+\rhead{Page \thepage\ of \pageref{LastPage}}
+
+%summary
+\input{sections/summary}
 
 %-------------------------------------------------------
 % Main Body

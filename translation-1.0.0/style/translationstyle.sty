@@ -1,0 +1,121 @@
+%------------------------------------------------------------
+% Latex全文样式布局的预定义
+% Author: Zhu Liucheng
+% E-mail : 2576950110@qq.com
+% Date : 2022/3/7
+
+\ProvidesPackage{translationstyle}
+
+%%  注意：引用宏包至少有两种方式：\usepackage{宏包名} 或者 \RequirePackage{宏包名}
+
+%------------------------------------------------------------
+% 全局样式宏包
+\RequirePackage{hypdoc}
+\RequirePackage{ifthen} 
+\RequirePackage{fontspec}[2017/01/20] % 字体控制宏包，需要使用xelatex编译
+\RequirePackage{amsmath} 
+\RequirePackage{unicode-math}
+\RequirePackage{siunitx}
+\RequirePackage[UTF8,scheme=chinese]{ctex}
+\RequirePackage[
+  top=2.5cm, bottom=2.5cm,
+  left=4cm, right=2cm,
+  headsep=3mm]{geometry}
+\RequirePackage{hologo}
+\RequirePackage{array,longtable,booktabs}
+\RequirePackage{listings}
+\RequirePackage{fancyhdr}
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{metalogo}
+\RequirePackage[tightLists=false]{markdown}
+
+%------------------------------------------------------------
+% 初始化
+\markdownSetup{
+  renderers = {
+    link = {\href{#2}{#1}},
+  }
+}
+
+\hypersetup{
+  pdflang     = zh-CN,
+  pdftitle    = {ThuThesis：南华大学外文翻译模板},
+  pdfauthor   = {南华大学 数理 Zhu Liucheng},
+  pdfsubject  = {南华大学外文翻译模板使用说明},
+  pdfkeywords = {论文模板; 南华大学; 使用说明},
+  pdfdisplaydoctitle = true
+}%
+
+\unimathsetup{
+  math-style=ISO,
+  bold-style=ISO,
+}
+
+% 数学公式格式初始化
+\DeclareRobustCommand\mathellipsis{\mathinner{\unicodecdots}}
+\IfFontExistsTF{XITSMath-Regular.otf}{
+  \setmathfont[
+    Extension    = .otf,
+    BoldFont     = XITSMath-Bold,
+    StylisticSet = 8,
+  ]{XITSMath-Regular}
+  \setmathfont[range={cal,bfcal},StylisticSet=1]{XITSMath-Regular.otf}
+}{
+  \setmathfont[
+    Extension    = .otf,
+    BoldFont     = *bold,
+    StylisticSet = 8,
+  ]{xits-math}
+  \setmathfont[range={cal,bfcal},StylisticSet=1]{xits-math.otf}
+}
+
+% 创建自己的颜色
+\colorlet{macro}{blue!60!black}
+\colorlet{env}{blue!70!black}
+\colorlet{option}{purple}
+
+% 定义所有的图片文件在 figures 子目录下
+\graphicspath{{figures/}}
+
+\DeclareDocumentCommand{\githubuser}{m}{\href{https://github.com/#1}{@#1}}
+
+%---------------------------------------------------------------------------
+% 字体定义
+\setmainfont{Times New Roman}  %默认英文字体.serif是有衬线字体sans serif无衬线字体
+\setmonofont{Consolas}
+\setCJKmainfont[ItalicFont={楷体}, BoldFont={黑体}]{宋体}%衬线字体 缺省中文字体为
+\setCJKsansfont{黑体}
+\punctstyle{hangmobanjiao}
+%-----------------------xeCJK下设置中文字体------------------------------%
+\setCJKfamilyfont{song}{SimSun}                             %宋体 song
+\newcommand{\song}{\CJKfamily{song}}
+\setCJKfamilyfont{fs}{FangSong}                      %仿宋  fs
+\newcommand{\fs}{\CJKfamily{fs}} 
+\let\kaishu\relax                                    %重定义楷体，打开假粗体
+\newCJKfontfamily\kaishu{KaiTi}[AutoFakeBold] 
+%\setCJKfamilyfont{ktgb}{KaiTi_GB2312}                      %楷体 GB2312
+%\newcommand{\ktgb}{\CJKfamily{ktgb}}
+\setCJKfamilyfont{yh}{Microsoft YaHei}                    %微软雅黑 yh
+\newcommand{\yh}{\CJKfamily{yh}}
+\setCJKfamilyfont{hei}{SimHei}                              %黑体  hei
+\newcommand{\hei}{\CJKfamily{hei}}
+\setCJKfamilyfont{hwxk}{STXingkai}                                %华文行楷  hwxk
+\newcommand{\hwxk}{\CJKfamily{hwxk}}
+%------------------------------设置字体大小------------------------%
+\newcommand{\chuhao}{\fontsize{42bp}{63bp}\selectfont}     %初号， 1.5倍行距
+\newcommand{\xiaochuhao}{\fontsize{36bp}{36bp}\selectfont} %小初号，单倍行距
+\newcommand{\yihao}{\fontsize{26bp}{39bp}\selectfont}        % 一号, 1.5 倍行距
+\newcommand{\erhao}{\fontsize{22bp}{33bp}\selectfont}        % 二号, 1.5倍行距
+\newcommand{\xiaoerhao}{\fontsize{18bp}{18bp}\selectfont}       % 小二, 单倍行距
+\newcommand{\sanhao}{\fontsize{16bp}{24bp}\selectfont}       % 三号, 1.5倍行距
+\newcommand{\xiaosanhao}{\fontsize{15bp}{22bp}\selectfont}      % 小三, 1.5倍行距
+\newcommand{\sihao}{\fontsize{14bp}{21bp}\selectfont}        % 四号, 1.5 倍行距
+\newcommand{\banxiaosi}{\fontsize{13bp}{20bp}\selectfont}  % 半小四, 20pt行距
+\newcommand{\xiaosihao}{\fontsize{12bp}{20bp}\selectfont}       % 小四, 20pt行距
+\newcommand{\dawuhao}{\fontsize{11bp}{11bp}\selectfont}      % 大五号, 单倍行距
+\newcommand{\wuhao}{\fontsize{10.5bp}{10.5bp}\selectfont}   % 五号, 单倍行距
+\newcommand{\xiaowuhao}{\fontsize{9bp}{9bp}\selectfont}   %小五号，单倍行距
+%------------------------------重定义normalize------------------------%
+\renewcommand{\normalsize}{\fontsize{12bp}{20bp}\selectfont}
