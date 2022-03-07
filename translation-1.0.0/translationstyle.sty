@@ -9,11 +9,11 @@
 %%  注意：引用宏包至少有两种方式：\usepackage{宏包名} 或者 \RequirePackage{宏包名}
 
 %------------------------------------------------------------
-% 
+% 全局样式宏包
 \RequirePackage{hypdoc}
 \RequirePackage{ifthen} 
-\RequirePackage{fontspec}[2017/01/20] % 字体需要使用xelatex编译
-\RequirePackage{amsmath}
+\RequirePackage{fontspec}[2017/01/20] % 字体控制宏包，需要使用xelatex编译
+\RequirePackage{amsmath} 
 \RequirePackage{unicode-math}
 \RequirePackage{siunitx}
 \RequirePackage[UTF8,scheme=chinese]{ctex}
@@ -32,8 +32,49 @@
 \RequirePackage[tightLists=false]{markdown}
 
 %------------------------------------------------------------
-% Replace ABCDEF in the next line with your chosen problem
-% and replace 1111111 with your Team Control Number
-\newcommand{\Problem}{D} % 选题
-\newcommand{\Team}{2116818} % 题号
+% 初始化
+\markdownSetup{
+  renderers = {
+    link = {\href{#2}{#1}},
+  }
+}
+
+\hypersetup{
+  pdflang     = zh-CN,
+  pdftitle    = {ThuThesis：南华大学外文翻译模板},
+  pdfauthor   = {南华大学 数理 Zhu Liucheng},
+  pdfsubject  = {南华大学外文翻译模板使用说明},
+  pdfkeywords = {论文模板; 南华大学; 使用说明},
+  pdfdisplaydoctitle = true
+}%
+
+\unimathsetup{
+  math-style=ISO,
+  bold-style=ISO,
+}
+
+% 数学公式格式初始化
+\DeclareRobustCommand\mathellipsis{\mathinner{\unicodecdots}}
+\IfFontExistsTF{XITSMath-Regular.otf}{
+  \setmathfont[
+    Extension    = .otf,
+    BoldFont     = XITSMath-Bold,
+    StylisticSet = 8,
+  ]{XITSMath-Regular}
+  \setmathfont[range={cal,bfcal},StylisticSet=1]{XITSMath-Regular.otf}
+}{
+  \setmathfont[
+    Extension    = .otf,
+    BoldFont     = *bold,
+    StylisticSet = 8,
+  ]{xits-math}
+  \setmathfont[range={cal,bfcal},StylisticSet=1]{xits-math.otf}
+}
+
+% 创建自己的颜色
+\colorlet{macro}{blue!60!black}
+\colorlet{env}{blue!70!black}
+\colorlet{option}{purple}
+
+\DeclareDocumentCommand{\githubuser}{m}{\href{https://github.com/#1}{@#1}}
 
