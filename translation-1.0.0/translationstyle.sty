@@ -6,22 +6,30 @@
 
 \ProvidesPackage{translationstyle}
 
-%------------------------------------------------------------
-% 页边距
-\usepackage{geometry}
-\usepackage{booktabs} % 三线表
-\geometry{left=1in,right=0.75in,top=1in,bottom=1in}
+%%  注意：引用宏包至少有两种方式：\usepackage{宏包名} 或者 \RequirePackage{宏包名}
 
 %------------------------------------------------------------
-% 其他
-\usepackage{palatino} % 字体
-\usepackage{lipsum} % 产生随机文本
-\usepackage{longtable} % 长表格
-\usepackage{indentfirst} % 段首
-\setlength\parindent{2em} % 空两格
-% \renewcommand{\baselinestretch}{1.0} % 单倍行间距
-\baselineskip=0.3\baselineskip % 设置行间距
-\setlength{\parskip}{1\baselineskip} % 设置段落间距
+% 
+\RequirePackage{hypdoc}
+\RequirePackage{ifthen} 
+\RequirePackage{fontspec}[2017/01/20] % 字体需要使用xelatex编译
+\RequirePackage{amsmath}
+\RequirePackage{unicode-math}
+\RequirePackage{siunitx}
+\RequirePackage[UTF8,scheme=chinese]{ctex}
+\RequirePackage[
+  top=2.5cm, bottom=2.5cm,
+  left=4cm, right=2cm,
+  headsep=3mm]{geometry}
+\RequirePackage{hologo}
+\RequirePackage{array,longtable,booktabs}
+\RequirePackage{listings}
+\RequirePackage{fancyhdr}
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{metalogo}
+\RequirePackage[tightLists=false]{markdown}
 
 %------------------------------------------------------------
 % Replace ABCDEF in the next line with your chosen problem
@@ -29,54 +37,3 @@
 \newcommand{\Problem}{D} % 选题
 \newcommand{\Team}{2116818} % 题号
 
-%------------------------------------------------------------
-% 引用的大部分宏包
-\usepackage{listings}
-\usepackage{algorithm} % 算法
-%\usepackage{newtxtext}
-\usepackage{algpseudocode}  % 伪代码
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{newtxmath} % must come after amsXXX
-\usepackage[pdftex]{graphicx}
-\usepackage{xcolor}
-\usepackage{fancyhdr}
-\usepackage{lastpage}
-\pagestyle{fancy} % 设置页眉    
-\lhead{Team \Team}
-\rhead{}
-\cfoot{}
-
-%------------------------------------------------------------
-% 摘要
-\usepackage{abstract} %摘要
-\renewcommand{\abstractnamefont}{\normalfont\bfseries} % 将字体设置为粗体
-\renewcommand{\abstracttextfont}{\normalfont} % 将摘要本身设置正常文本
-
-%------------------------------------------------------------
-% 代码
-\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
-
-%------------------------------------------------------------
-% 超链接
-% 点击目录，图表，代码等索引，发生跳转
-\usepackage[
-	colorlinks,
-	linkcolor=black,
-	anchorcolor=black,
-	citecolor=black
-]{hyperref}
-
-%------------------------------------------------------------
-% 图表目录
-\newcommand{\loflabel}{Tab.}%在图目录编号前添加Tab.
-\newcommand{\lotlabel}{Fig.}
-
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{definition}{Definition}
-\newcommand{\topcaption}{%
-	%\setlength{\abovecaptionskip}{0pt}%
-	%\setlength{\belowcaptionskip}{10pt}%
-	\caption
-}   % 表格上标题修改
