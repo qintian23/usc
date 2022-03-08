@@ -5,7 +5,11 @@
 % E-mail: 2576950110@qq.com
 % Date : 2022/3/7
 
-\documentclass[12pt]{article}
+\documentclass[a4paper,onecolumn,12pt]{translation}
+% a4paper 用a4纸张大小
+% onecolumn 单排 亦可以使双排 twocolumn
+% 10pt 11pt 12pt
+% article 文档样式，report book slides
 
 \usepackage{style/translationstyle} % 引用自定义布局
 
@@ -15,16 +19,16 @@
 
 %-------------------------------------------------------
 % Contents
-\newpage \tableofcontents \newpage
-\setcounter{page}{1}
-\rhead{Page \thepage\ of \pageref{LastPage}}
+% \newpage \tableofcontents \newpage
+% \setcounter{page}{1}
+% \rhead{Page \thepage\ of \pageref{LastPage}}
 
 %summary
 \input{sections/summary}
 
 %-------------------------------------------------------
 % Main Body
-% \input{sections/introduction} 
+\input{sections/cater1} 
 % \input{sections/Symbol Description}
 % \input{sections/Preparation of the Models}
 % \input{sections/Strengths and Weaknesses}

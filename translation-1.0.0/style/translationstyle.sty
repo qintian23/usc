@@ -1,12 +1,23 @@
-%------------------------------------------------------------
+%NAME: translationstyle.sty
+
 % Latex全文样式布局的预定义
 % Author: Zhu Liucheng
-% E-mail : 2576950110@qq.com
+% E-mail: 2576950110@qq.com
 % Date : 2022/3/7
+
+%------------------------------------------------------------
+% \ProvidesPackage{你自己编写的包名}
+% \RequirePackage[支持的参数]{你需要引用的包名}
+% \newcommand{自定义的命令}
+% \newenvironment{自定义的环境}
 
 \ProvidesPackage{translationstyle}
 
 %%  注意：引用宏包至少有两种方式：\usepackage{宏包名} 或者 \RequirePackage{宏包名}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                        导 入 宏 包                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %------------------------------------------------------------
 % 全局样式宏包
@@ -16,23 +27,97 @@
 \RequirePackage{amsmath} 
 \RequirePackage{unicode-math}
 \RequirePackage{siunitx}
+\RequirePackage{fancyhdr}
 \RequirePackage[UTF8,scheme=chinese]{ctex}
 \RequirePackage[
-  top=2.5cm, bottom=2.5cm,
-  left=4cm, right=2cm,
-  headsep=3mm]{geometry}
+  top=2.54cm, bottom=2.54cm,
+  left=3.18cm, right=3.18cm,
+  headsep=3mm]{geometry} % 页边距 常规参数
 \RequirePackage{hologo}
 \RequirePackage{array,longtable,booktabs}
-\RequirePackage{listings}
-\RequirePackage{fancyhdr}
+\RequirePackage{listings} % 粘贴c代码
 \RequirePackage{xcolor}
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
 \RequirePackage{metalogo}
 \RequirePackage[tightLists=false]{markdown}
+\RequirePackage{setspace} % 行间距包
+\RequirePackage{caption} % 定义表格的对齐方式，默认是中间
+%\captionsetup[table]{justification=raggedleft,singlelinecheck=off}%加上这句话就是左对齐
 
-%------------------------------------------------------------
-% 初始化
+\RequirePackage{sectsty}%设置章节样式
+\allsectionsfont{\mdseries\nohang\large\em}
+
+%\subsectionfont{字体命令}    小节标题字体
+%\subsubsectionfont{字体命令}    小小节标题字体
+%\paragraphfont{字体命令}    段标题字体
+%\subparagraphfont{字体命令}    小段标题字体
+%\minisecfont{字体命令}    \minisec标题字体
+%\partnumberfont{字体命令}    部序号字体
+%\parttitlefont{字体命令}    部标题字体
+%\chapternumberfont{字体命令}章序号字体
+%\chaptertitlefont{字体命令}章标题字体
+%\nohang 多行标题时不缩排
+
+
+%-----------------------------------------------------------------
+% \RequirePackage[raggedright]{titlesec}%raggedleft (居左，默认), raggedright (居右)。
+% \titleformat{\section}{\centering\Huge\bfseries}{第\,\thechapter\,章}{1em}{}
+
+% \titleformat{command}[shape]{format}{label}{sep}{before}[after]
+% format rm sf tt md bf up it sl sc ||||big medium small tiny |||raggedleft center raggedright
+% command 是要重新定义的各种标题命令,比如 \part，\chapter，\section，\subsection，\subsubsection，\paragraph，\subparagraph等
+% shape 是用来设定段落形状的,可选的参数有 hang 、 block 、 display 等,详见 titlesec 文档,
+% label 用于定义定义标题的标签,就是标题内容前面的标号；
+% sep 定义标题的标签与标题内容之间的间隔距离。
+% before 用于在标题内容前再加些内容；
+% after 用于在标题内容后再加些内容。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                          初 始 化                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%---------------------------------------------------------------------
+%	页眉页脚设置
+\fancypagestyle{plain}{
+    \pagestyle{fancy}      %改变章节首页页眉
+}
+\pagestyle{fancy}
+\cfoot{\thepage}
+
+%---------------------------------------------------------------------
+%	摘要标题设置
+%\renewcommand{\abstractname}{摘要}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+
+
+\renewcommand\arraystretch{0.8} % 表格行间距
+
+
+% 代码格式
+\lstset{
+    tabsize=4, keepspaces=true,
+    xleftmargin=2em,xrightmargin=0em, aboveskip=1em,
+    %backgroundcolor=\color{gray!20},  % 定义背景颜色
+    frame=none,                       % 表示不要边框
+    extendedchars=false,              % 解决代码跨页时，章节标题，页眉等汉字不显示的问题
+    numberstyle=\ttfamily,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue}\bfseries,
+    breakindent=10pt,
+    identifierstyle=,                 % nothing happens
+    commentstyle=\color{green}\small,  % 注释的设置
+    morecomment=[l][\color{green}]{\#},
+    numbers=left,stepnumber=1,numberstyle=\scriptsize,
+    showstringspaces=false,
+    showspaces=false,
+    flexiblecolumns=true,
+    breaklines=true, breakautoindent=true,breakindent=4em,
+    escapeinside={/*@}{@*/},
+}
+
 \markdownSetup{
   renderers = {
     link = {\href{#2}{#1}},
@@ -71,6 +156,10 @@
   \setmathfont[range={cal,bfcal},StylisticSet=1]{xits-math.otf}
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                          自 定 义                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % 创建自己的颜色
 \colorlet{macro}{blue!60!black}
 \colorlet{env}{blue!70!black}
@@ -88,7 +177,9 @@
 \setCJKmainfont[ItalicFont={楷体}, BoldFont={黑体}]{宋体}%衬线字体 缺省中文字体为
 \setCJKsansfont{黑体}
 \punctstyle{hangmobanjiao}
-%-----------------------xeCJK下设置中文字体------------------------------%
+
+%------------------------------------------------------------------------------
+% xeCJK下设置中文字体
 \setCJKfamilyfont{song}{SimSun}                             %宋体 song
 \newcommand{\song}{\CJKfamily{song}}
 \setCJKfamilyfont{fs}{FangSong}                      %仿宋  fs
@@ -103,7 +194,9 @@
 \newcommand{\hei}{\CJKfamily{hei}}
 \setCJKfamilyfont{hwxk}{STXingkai}                                %华文行楷  hwxk
 \newcommand{\hwxk}{\CJKfamily{hwxk}}
-%------------------------------设置字体大小------------------------%
+
+%-------------------------------------------------------------------------------
+% 设置字体大小
 \newcommand{\chuhao}{\fontsize{42bp}{63bp}\selectfont}     %初号， 1.5倍行距
 \newcommand{\xiaochuhao}{\fontsize{36bp}{36bp}\selectfont} %小初号，单倍行距
 \newcommand{\yihao}{\fontsize{26bp}{39bp}\selectfont}        % 一号, 1.5 倍行距
@@ -114,8 +207,19 @@
 \newcommand{\sihao}{\fontsize{14bp}{21bp}\selectfont}        % 四号, 1.5 倍行距
 \newcommand{\banxiaosi}{\fontsize{13bp}{20bp}\selectfont}  % 半小四, 20pt行距
 \newcommand{\xiaosihao}{\fontsize{12bp}{20bp}\selectfont}       % 小四, 20pt行距
+\newcommand{\xiaosi}{\fontsize{12bp}{21bp}\selectfont}       % 小四, 1.5倍行距
 \newcommand{\dawuhao}{\fontsize{11bp}{11bp}\selectfont}      % 大五号, 单倍行距
 \newcommand{\wuhao}{\fontsize{10.5bp}{10.5bp}\selectfont}   % 五号, 单倍行距
 \newcommand{\xiaowuhao}{\fontsize{9bp}{9bp}\selectfont}   %小五号，单倍行距
-%------------------------------重定义normalize------------------------%
-\renewcommand{\normalsize}{\fontsize{12bp}{20bp}\selectfont}
+
+%------------------------------------------------------------------------------
+% 重定义normalize
+\renewcommand{\normalsize}{\fontsize{12bp}{21bp}\selectfont}
+
+%----------------------------------------------------------------------------
+% 数学的自定义
+\newtheorem{theorem}{定理}
+\newtheorem{definition}{定义}
+\newtheorem{corollary}{推论}
+\newtheorem{example}{例}
+
