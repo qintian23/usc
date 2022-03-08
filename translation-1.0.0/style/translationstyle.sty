@@ -43,127 +43,20 @@
 \RequirePackage[tightLists=false]{markdown}
 \RequirePackage{setspace} % 行间距包
 \RequirePackage{caption} % 定义表格的对齐方式，默认是中间
-%\captionsetup[table]{justification=raggedleft,singlelinecheck=off}%加上这句话就是左对齐
 
-\RequirePackage{sectsty}%设置章节样式
-\allsectionsfont{\mdseries\nohang\large\em}
+% \RequirePackage{sectsty}%设置章节样式
+% \allsectionsfont{\mdseries\nohang\large\em}
 
-%\subsectionfont{字体命令}    小节标题字体
-%\subsubsectionfont{字体命令}    小小节标题字体
-%\paragraphfont{字体命令}    段标题字体
-%\subparagraphfont{字体命令}    小段标题字体
-%\minisecfont{字体命令}    \minisec标题字体
-%\partnumberfont{字体命令}    部序号字体
-%\parttitlefont{字体命令}    部标题字体
-%\chapternumberfont{字体命令}章序号字体
-%\chaptertitlefont{字体命令}章标题字体
-%\nohang 多行标题时不缩排
-
-
-%-----------------------------------------------------------------
-% \RequirePackage[raggedright]{titlesec}%raggedleft (居左，默认), raggedright (居右)。
-% \titleformat{\section}{\centering\Huge\bfseries}{第\,\thechapter\,章}{1em}{}
-
-% \titleformat{command}[shape]{format}{label}{sep}{before}[after]
-% format rm sf tt md bf up it sl sc ||||big medium small tiny |||raggedleft center raggedright
-% command 是要重新定义的各种标题命令,比如 \part，\chapter，\section，\subsection，\subsubsection，\paragraph，\subparagraph等
-% shape 是用来设定段落形状的,可选的参数有 hang 、 block 、 display 等,详见 titlesec 文档,
-% label 用于定义定义标题的标签,就是标题内容前面的标号；
-% sep 定义标题的标签与标题内容之间的间隔距离。
-% before 用于在标题内容前再加些内容；
-% after 用于在标题内容后再加些内容。
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                          初 始 化                             %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%---------------------------------------------------------------------
-%	页眉页脚设置
-\fancypagestyle{plain}{
-    \pagestyle{fancy}      %改变章节首页页眉
-}
-\pagestyle{fancy}
-\cfoot{\thepage}
-
-%---------------------------------------------------------------------
-%	摘要标题设置
-%\renewcommand{\abstractname}{摘要}
-\renewcommand{\figurename}{图}
-\renewcommand{\tablename}{表}
-
-
-\renewcommand\arraystretch{0.8} % 表格行间距
-
-
-% 代码格式
-\lstset{
-    tabsize=4, keepspaces=true,
-    xleftmargin=2em,xrightmargin=0em, aboveskip=1em,
-    %backgroundcolor=\color{gray!20},  % 定义背景颜色
-    frame=none,                       % 表示不要边框
-    extendedchars=false,              % 解决代码跨页时，章节标题，页眉等汉字不显示的问题
-    numberstyle=\ttfamily,
-    basicstyle=\ttfamily,
-    keywordstyle=\color{blue}\bfseries,
-    breakindent=10pt,
-    identifierstyle=,                 % nothing happens
-    commentstyle=\color{green}\small,  % 注释的设置
-    morecomment=[l][\color{green}]{\#},
-    numbers=left,stepnumber=1,numberstyle=\scriptsize,
-    showstringspaces=false,
-    showspaces=false,
-    flexiblecolumns=true,
-    breaklines=true, breakautoindent=true,breakindent=4em,
-    escapeinside={/*@}{@*/},
-}
-
-\markdownSetup{
-  renderers = {
-    link = {\href{#2}{#1}},
-  }
-}
-
-\hypersetup{
-  pdflang     = zh-CN,
-  pdftitle    = {ThuThesis：南华大学外文翻译模板},
-  pdfauthor   = {南华大学 数理 Zhu Liucheng},
-  pdfsubject  = {南华大学外文翻译模板使用说明},
-  pdfkeywords = {论文模板; 南华大学; 使用说明},
-  pdfdisplaydoctitle = true
-}%
-
-\unimathsetup{
-  math-style=ISO,
-  bold-style=ISO,
-}
-
-% 数学公式格式初始化
-\DeclareRobustCommand\mathellipsis{\mathinner{\unicodecdots}}
-\IfFontExistsTF{XITSMath-Regular.otf}{
-  \setmathfont[
-    Extension    = .otf,
-    BoldFont     = XITSMath-Bold,
-    StylisticSet = 8,
-  ]{XITSMath-Regular}
-  \setmathfont[range={cal,bfcal},StylisticSet=1]{XITSMath-Regular.otf}
-}{
-  \setmathfont[
-    Extension    = .otf,
-    BoldFont     = *bold,
-    StylisticSet = 8,
-  ]{xits-math}
-  \setmathfont[range={cal,bfcal},StylisticSet=1]{xits-math.otf}
-}
+\RequirePackage{titlesec}   % in preamble
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                          自 定 义                             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % 创建自己的颜色
-\colorlet{macro}{blue!60!black}
-\colorlet{env}{blue!70!black}
-\colorlet{option}{purple}
+% \colorlet{macro}{blue!60!black}
+% \colorlet{env}{blue!70!black}
+% \colorlet{option}{purple}
 
 % 定义所有的图片文件在 figures 子目录下
 \graphicspath{{figures/}}
@@ -207,14 +100,13 @@
 \newcommand{\sihao}{\fontsize{14bp}{21bp}\selectfont}        % 四号, 1.5 倍行距
 \newcommand{\banxiaosi}{\fontsize{13bp}{20bp}\selectfont}  % 半小四, 20pt行距
 \newcommand{\xiaosihao}{\fontsize{12bp}{20bp}\selectfont}       % 小四, 20pt行距
-\newcommand{\xiaosi}{\fontsize{12bp}{21bp}\selectfont}       % 小四, 1.5倍行距
 \newcommand{\dawuhao}{\fontsize{11bp}{11bp}\selectfont}      % 大五号, 单倍行距
 \newcommand{\wuhao}{\fontsize{10.5bp}{10.5bp}\selectfont}   % 五号, 单倍行距
 \newcommand{\xiaowuhao}{\fontsize{9bp}{9bp}\selectfont}   %小五号，单倍行距
 
-%------------------------------------------------------------------------------
-% 重定义normalize
-\renewcommand{\normalsize}{\fontsize{12bp}{21bp}\selectfont}
+% %------------------------------------------------------------------------------
+% % 重定义normalize
+% \renewcommand{\normalsize}{\fontsize{12bp}{21bp}\selectfont}
 
 %----------------------------------------------------------------------------
 % 数学的自定义
@@ -223,3 +115,142 @@
 \newtheorem{corollary}{推论}
 \newtheorem{example}{例}
 
+% \titleformat{\section}
+%   {\heiti\sanhao\bfseries}  % format of title
+%   {\makebox[1pc][r]{\thesection\hspace{1pc}}} % label
+%   {0pt}                   % length of separation between label and title
+%   {}                      % before-code hook
+% \titlespacing*{\section}{0pc}{30pt}{10pt}[10pc]
+
+%---------------------------------------------------------------
+% 标题格式
+\renewcommand\section{%
+  \@startsection{section}% name
+    {1}% level
+    {0pt}% indent
+    {-3.5ex plus -1ex minus -.2ex}% beforeskip
+    {2.3ex plus.2ex}% afterskip
+    {\heiti\sanhao\bfseries}% style
+}
+
+\renewcommand\subsection{%
+  \@startsection{subsection}% name
+    {1}% level
+    {0pt}% indent
+    {-3.5ex plus -1ex minus -.2ex}% beforeskip
+    {2.3ex plus.2ex}% afterskip
+    {\heiti\xiaosanhao\bfseries}% style
+}
+\renewcommand\subsubsection{%
+  \@startsection{subsubsection}% name
+    {1}% level
+    {0pt}% indent
+    {-3.5ex plus -1ex minus -.2ex}% beforeskip
+    {2.3ex plus.2ex}% afterskip
+    {\heiti\sihao\bfseries}% style
+}
+
+\makeatletter % change default title style
+  \renewcommand*\maketitle{%
+      \begin{center}% 居中标题
+        % \vskip 3em%
+          \bfseries % 默认粗体
+          {\sanhao \@title \par} % LARGE字号
+          \vskip 1em% %%%  标题下面只有1em的缩进或margin
+          {\global\let\author\@empty}%
+          {\global\let\date\@empty}%
+          \thispagestyle{empty} %  不设置页面样式
+      \end{center}%
+    \setcounter{footnote}{0}%
+  }
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                          初 始 化                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%---------------------------------------------------------------------
+%	页眉页脚设置
+% \fancypagestyle{plain}{
+%     \pagestyle{fancy}      %改变章节首页页眉
+% }
+\pagestyle{fancy}
+\rhead{}
+% \cfoot{\thepage}
+
+% \setlength{\voffset}{-10mm}                        
+% \setlength{\topmargin}{0mm}
+\setlength{\headheight}{5mm}
+\setlength{\headsep}{5mm}
+% \setlength{\footskip}{10mm}
+
+%---------------------------------------------------------------------
+%	摘要标题设置
+%\renewcommand{\abstractname}{摘要}
+% \renewcommand{\figurename}{图}
+% \renewcommand{\tablename}{表}
+
+% \renewcommand\arraystretch{0.8} % 表格行间距
+
+
+% % 代码格式
+% \lstset{
+%     tabsize=4, keepspaces=true,
+%     xleftmargin=2em,xrightmargin=0em, aboveskip=1em,
+%     %backgroundcolor=\color{gray!20},  % 定义背景颜色
+%     frame=none,                       % 表示不要边框
+%     extendedchars=false,              % 解决代码跨页时，章节标题，页眉等汉字不显示的问题
+%     numberstyle=\ttfamily,
+%     basicstyle=\ttfamily,
+%     keywordstyle=\color{blue}\bfseries,
+%     breakindent=10pt,
+%     identifierstyle=,                 % nothing happens
+%     commentstyle=\color{green}\small,  % 注释的设置
+%     morecomment=[l][\color{green}]{\#},
+%     numbers=left,stepnumber=1,numberstyle=\scriptsize,
+%     showstringspaces=false,
+%     showspaces=false,
+%     flexiblecolumns=true,
+%     breaklines=true, breakautoindent=true,breakindent=4em,
+%     escapeinside={/*@}{@*/},
+% }
+
+% \markdownSetup{
+%   renderers = {
+%     link = {\href{#2}{#1}},
+%   }
+% }
+
+% \hypersetup{
+%   pdflang     = zh-CN,
+%   pdftitle    = {ThuThesis：南华大学外文翻译模板},
+%   pdfauthor   = {南华大学 数理 Zhu Liucheng},
+%   pdfsubject  = {南华大学外文翻译模板使用说明},
+%   pdfkeywords = {论文模板; 南华大学; 使用说明},
+%   pdfdisplaydoctitle = true
+% }%
+
+% \unimathsetup{
+%   math-style=ISO,
+%   bold-style=ISO,
+% }
+
+% % 数学公式格式初始化
+% \DeclareRobustCommand\mathellipsis{\mathinner{\unicodecdots}}
+% \IfFontExistsTF{XITSMath-Regular.otf}{
+%   \setmathfont[
+%     Extension    = .otf,
+%     BoldFont     = XITSMath-Bold,
+%     StylisticSet = 8,
+%   ]{XITSMath-Regular}
+%   \setmathfont[range={cal,bfcal},StylisticSet=1]{XITSMath-Regular.otf}
+% }{
+%   \setmathfont[
+%     Extension    = .otf,
+%     BoldFont     = *bold,
+%     StylisticSet = 8,
+%   ]{xits-math}
+%   \setmathfont[range={cal,bfcal},StylisticSet=1]{xits-math.otf}
+% }
