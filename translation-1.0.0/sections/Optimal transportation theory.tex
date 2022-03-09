@@ -1,0 +1,154 @@
+% !TeX root = ../translation.tex
+
+\section{最优传输理论}
+
+在本节中，我们将介绍经典OT理论中的基本概念和定理，重点介绍布雷尼尔的方法及其推广到离散设置。细节可以在维拉尼的书《[5]中找到。
+
+\subsection{Monge问题}
+
+假设 $X \subset \mathbb{R}^d, Y \subset \mathbb{R}^d $ 是 $ d $ 维欧几里得空间 $ \mathbb{R}^d $ 的两个子集，$\mu$ 和 $\nu$分别是定义在 $X$ 和 $Y$ 上的两个概率测度，密度函数如下：
+\begin{equation*}
+	\begin{array}{c} 
+		\mu(x) =f(x)dx \\ 
+		\nu (y) =g(y)dy 
+	\end{array}
+\end{equation*}
+
+假设总测度相等，$\mu(X)=\nu(Y)$；即
+\begin{equation}
+	\int_X f(x)dx =\int_Y g(y)dy
+	\label{function:1}
+\end{equation}
+
+我们只考虑保留这些测度的映射。
+
+\begin{definition}[保留测度映射]
+	如果映射 $T: X \to Y $ 对于任何可测量的集合$B \subset Y $，集合 $T^{-1}(B)$ 是 $\mu$ 可测量的和 $µ[T^{-1}(B)]=\nu(B)$，即，
+	\begin{equation}
+		\int_{T^{-1}(B)} f(x)dx =\int_B g(y)dy
+		\label{function:2}
+	\end{equation}
+
+	测度保持条件记为$T_{\# \mu}=\nu$，其中$T_{\#\mu}$ 是由$T$诱导的推向测度。
+	\label{def:3.1}
+\end{definition}
+
+给定一个成本函数 $c(x,y): X \times Y \to \mathbb{R} $，它表示将每个单位质量从源点移动到目标的成本，映射$T: X \to Y$的总传输成本被定义为
+\begin{equation}
+	C_t=\int_X c[x,T(x)]d\mu (x) 
+	\label{function:3}
+\end{equation}
+
+Monge的OT问题来自于找到使总运输成本最小化的保测度映射。
+
+\begin{problem}[蒙日【43】;MP]
+	给定一个传输成本函数$c(x,y): X \times Y\to\mathbb{R}_{\ge 0}$，找到保测度映射 $X \to Y$，使总传输成本最小化：
+	\begin{equation}
+		(MP) \quad \underset{T_{\# \mu}=\nu}{min} \int_X c[x,T(x)]d\mu(x)  
+		\label{function:4}
+	\end{equation}
+	\label{problem:3.1}
+\end{problem}
+
+\begin{definition}[OT映射]
+	蒙日问题的解决方案被称为OT映射。一个OT映射的总运输成本被称为$\mu$和$\nu$之间的Wasserstein距离，记为$W_c(\mu,\nu)$。
+	\begin{equation}
+		W_c(\mu,\nu)= \underset{T_{\# \mu}=\nu}{min} \int_X c[x,T(x)]d\mu(x)  
+		\label{function:5}
+	\end{equation}
+	\label{definition:3.2}
+\end{definition}
+
+\subsection{Kontarovich的方法}
+
+根据成本函数和度量，在$(X、\mu)$和$(Y、\nu)$之间的OT映射可能不存在。Kontarovich将传输映射放宽为传输方案，并定义了联合概率测测度$\rho(x,y): X \times Y \to \mathbb{R}_{\ge 0}$，使$\rho$的边缘概率分别等于$\mu$和$\nu$。设投影映射形式化为$\pi_x(x，y)=x, \pi_y(x，y)=y$，然后定义联合度量类如下：
+\begin{equation}
+	\Pi(x,y)= \left\{ \rho(x,y): X\times Y \to \mathbb{R} : (\pi_x)_{\#}\rho=\mu, (\pi_y)_{\#}\rho=\nu \right\} 
+	\label{function:6}
+\end{equation}
+
+\begin{problem}[Kontarovich;KP]
+	给定一个传输成本函数$c(x,y): X \times Y\to\mathbb{R}_{\ge 0}$，找到保测度映射 $X \to Y$，使总传输成本最小化：
+	\begin{equation}
+		(KP) \quad W_c (\mu,\nu)= \underset{\rho \in \Pi(\mu,\nu)}{min} \int_{X \times Y} c(x,y)d\rho(x,y)  
+		\label{function:7}
+	\end{equation}
+	\label{problem:3.2}
+\end{problem}
+
+Kontarovich问题(KP)可以用LP方法来求解。由于LP等式的二元性，因此 Eq.(\ref{function:7})（KP方程）可以重新表述为对偶性问题(DP)，如下：
+\begin{problem}[对偶;DP]。
+	给定一个传输成本函数$c(x,y):X\times Y \to \mathbb{R}_{\ge0}$，找到使总运输成本最小化的联合概率测度$\rho(x,y): X \times Y \to \mathbb{R}_{\ge0}$
+	\begin{equation}
+		(DP) \quad \underset{\varphi , \psi }{max}\left [ \int_X \varphi (x)d\mu + \int_Y \psi (y)d\nu : \varphi(x)+\psi(y) \ge c(x,y) \right ]   
+		\label{function:8}
+	\end{equation}
+	\label{problem:3.3}
+	
+	等式(\ref{function:8})的最大值给出了Wasserstein距离。现有的WGAN模型大多是基于$L^1$代价函数下的对偶公式。
+\end{problem}
+
+\begin{definition}[c-转换]
+	$\varphi: X\to \mathbb{R}$ 的c-变换被定义为$\varphi ^ c: Y \to \mathbb{R}$ :
+	\begin{equation}
+			\varphi ^c(y)= \underset{x \in X }{inf}\left [ c(x,y)-\varphi(x) \right ]
+		\label{function:9}
+	\end{equation}
+	   
+	然后，DP可以重写如下：
+	\begin{equation}
+		(DP) \quad W_c(\mu , \nu) = \underset{\varphi }{max} \int_X \varphi (x)d\mu +\int _Y \varphi ^c (y)d\nu
+		\label{function:10}
+	\end{equation}
+	\label{definition:3.3}
+\end{definition}
+
+\subsection{Brenier方法}
+
+对于二次欧氏距离代价，用布雷内尔[44]证明了OT映射的存在性、唯一性和内在结构
+\begin{theorem}[Brenier【44】]
+	假设$X$和$Y$是欧几里得空间$\mathbb{R}^d$的子集，运输代价是二次欧氏距离$c(x,y)=\frac{1}{2}\left \| x-y \right \| ^2 $。此外，$\mu$是绝对连续的，$\mu$和$\nu$有有限的二阶矩
+	\begin{equation}
+		\int _X \left \| x \right \| ^2 d\mu(x) + \int _Y \left \| y \right \| ^2 d\nu(x) < \infty 
+		\label{function:11}
+	\end{equation}
+	
+	然后存在一个凸函数$\mu : X \to \mathbb{R}$，即所谓的Brenier势，其梯度映射 $\bigtriangledown u$ 给出了Monge问题的解：
+	\begin{equation}
+		(\bigtriangledown u)_{\#} \mu = \nu
+		\label{function:12}
+	\end{equation}
+
+	 Brenier的势是唯一不变的；因此，最佳的传输映射是唯一的。
+	 
+	 假设Briener势是$C^2$光滑的，那么它就是以下Monge–Ampère方程的解：
+	 \begin{equation}
+	 	det(\frac{\partial ^2 u(x)}{\partial x_i \partial x_j})=\frac{f(x)}{g \circ \bigtriangledown u(x)}
+	 	\label{function:13}
+	 \end{equation}
+ 
+ 	对于 $\mathbb{R}^d$ 中的$L^2$运输成本 $c(x,y)=\frac{1}{2} \left \| x-y \right \|^2  $，c-变换和经典 Legendre变换具有特殊的关系。
+	\label{theorem:3.1}
+\end{theorem}
+
+\begin{definition}[Legendre变换]
+	给定一个函数$\varphi : \mathbb{R}^n \to \mathbb{R}$，其Legendre变换定义如下：
+	\begin{equation}
+		\varphi ^*(y)=\underset{x}{sup}\left [ \left \langle x,y \right \rangle -\varphi (x) \right ]  
+		\label{function:14}
+	\end{equation}
+
+	当$c(x,y)=\frac{1}{2} \left \| x-y \right \| ^2 $可以证明，以下关系成立：
+	\begin{equation}
+		\frac{1}{2}\left \| y \right \|^2-\varphi ^c (y)=\left [ \frac{1}{2} \left \| x \right \| ^2-\varphi (x) \right ]^*  
+		\label{function:15}
+	\end{equation}
+	\label{definition:3.4}
+\end{definition}
+
+\begin{theorem}[Briener极性因子分解【44】]
+	假设$X$和$Y$是欧几里得空间$\mathbb{R}^d$，$\mu$是绝对连续的Lebesgue测量，和映射$\varphi : X\to Y$推动$\mu$向前到$\nu$，$\varphi _{\#}\mu=\nu$，然后存在一个凸函数$u: X \to \mathbb{R}$，这样$\varphi=\bigtriangledown u(x)\circ s $ ，在$s: X \to X$是保测度的，$s_{\#}\mu=\mu$。此外，这个因子分解是唯一的。
+	\label{theorem:3.2}
+\end{theorem}
+
+以下定理在OT理论中是众所周知的

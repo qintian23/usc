@@ -26,6 +26,7 @@
 \RequirePackage{fontspec}[2017/01/20] % 字体控制宏包，需要使用xelatex编译
 \RequirePackage{amsmath} 
 \RequirePackage{unicode-math}
+%\RequirePackage{calc} % 数学
 \RequirePackage{siunitx}
 \RequirePackage{fancyhdr}
 \RequirePackage[UTF8,scheme=chinese]{ctex}
@@ -110,10 +111,15 @@
 
 %----------------------------------------------------------------------------
 % 数学的自定义
-\newtheorem{theorem}{定理}
-\newtheorem{definition}{定义}
-\newtheorem{corollary}{推论}
-\newtheorem{example}{例}
+\newtheorem{theorem}{定理}[section]
+
+\newtheorem{definition}{定义}[section]
+
+\newtheorem{corollary}{推论}[section]
+
+\newtheorem{example}{例}[section]
+
+\newtheorem{problem}{问题}[section]
 
 % \titleformat{\section}
 %   {\heiti\sanhao\bfseries}  % format of title
@@ -187,6 +193,11 @@
 \setlength{\headsep}{5mm}
 % \setlength{\footskip}{10mm}
 
+%\abovedisplayshortskip=0pt
+%\belowdisplayshortskip=0pt
+%\abovedisplayskip=0pt
+%\belowdisplayskip=0pt
+
 %---------------------------------------------------------------------
 %	摘要标题设置
 %\renewcommand{\abstractname}{摘要}
@@ -224,34 +235,11 @@
 %   }
 % }
 
-% \hypersetup{
-%   pdflang     = zh-CN,
-%   pdftitle    = {ThuThesis：南华大学外文翻译模板},
-%   pdfauthor   = {南华大学 数理 Zhu Liucheng},
-%   pdfsubject  = {南华大学外文翻译模板使用说明},
-%   pdfkeywords = {论文模板; 南华大学; 使用说明},
-%   pdfdisplaydoctitle = true
-% }%
-
-% \unimathsetup{
-%   math-style=ISO,
-%   bold-style=ISO,
-% }
-
-% % 数学公式格式初始化
-% \DeclareRobustCommand\mathellipsis{\mathinner{\unicodecdots}}
-% \IfFontExistsTF{XITSMath-Regular.otf}{
-%   \setmathfont[
-%     Extension    = .otf,
-%     BoldFont     = XITSMath-Bold,
-%     StylisticSet = 8,
-%   ]{XITSMath-Regular}
-%   \setmathfont[range={cal,bfcal},StylisticSet=1]{XITSMath-Regular.otf}
-% }{
-%   \setmathfont[
-%     Extension    = .otf,
-%     BoldFont     = *bold,
-%     StylisticSet = 8,
-%   ]{xits-math}
-%   \setmathfont[range={cal,bfcal},StylisticSet=1]{xits-math.otf}
-% }
+\hypersetup{
+  pdflang     = zh-CN,
+  pdftitle    = {ThuThesis：南华大学外文翻译模板},
+  pdfauthor   = {南华大学 数理 Zhu Liucheng},
+  pdfsubject  = {南华大学外文翻译模板使用说明},
+  pdfkeywords = {论文模板; 南华大学; 使用说明},
+  pdfdisplaydoctitle = true
+}%
