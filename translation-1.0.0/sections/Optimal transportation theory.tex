@@ -152,3 +152,86 @@ Kontarovich问题(KP)可以用LP方法来求解。由于LP等式的二元性，�
 \end{theorem}
 
 以下定理在OT理论中是众所周知的
+\begin{theorem}[Villani【44】]
+	给定紧凸区域$\Omega \subset \mathbb{R}^d$的$\mu$和$\nu$，对于代价$c(x,y)=h(x-y)$存在一个OT方案$\rho$，且$h$严格凸。它是唯一的，并且形式为$(id，T_{\#})\mu \quad$ (id：标识映射)，前提是$\mu$是绝对连续的，而$\partial \Omega$可以忽略不计。此外，存在Kantorovich势$\varphi$，$T$可以表示为：
+	\begin{equation*}
+		T(x)=x-(\bigtriangledown h)^{-1} \left [ \bigtriangledown \varphi (x) \right ] 
+	\end{equation*}
+
+	当$c(x,y)=\frac{1}{2} \left \| x-y \right \|^2 $，我们有
+	\begin{equation*}
+		T(x)=x- \bigtriangledown \varphi (x)= \bigtriangledown \left [ \frac{1}{2} \left \| x \right \| ^2 - \varphi(x) \right ] =  \bigtriangledown u(x)
+	\end{equation*}
+
+	在这种情况下， Brenier势在$\mu$和Kantorovich势在$\varphi$有以下关系：
+	\begin{equation}
+		u(x)=\frac{1}{2} \left \| x \right \| ^2 -\varphi (x)
+		\label{function:16}
+	\end{equation}
+	\label{theorem:3.3}
+\end{theorem}
+
+\subsection{OT映射的正则性}
+
+设$\Omega$和$\Lambda$是$\mathbb{R}^d$上的两个有界光滑开集，设$\mu=fdx$和$\nu=gdy$是该$\mathbb{R}^d$上的两个概率测度$f\mid _{\mathbb{R}^d \setminus \Omega }=0$ 和 $g\mid _{\mathbb{R}^d \setminus \Lambda }=0$。假设$f$和$g$在$\Omega$和$\Lambda$上分别有界远离零和无穷大。
+
+\subsubsection{凸目标区域}
+
+\begin{definition}[Hölder连续]
+	当存在非负实常数$C$，$\alpha>0$时，使得$\left | f(x)-f(y) \right | \le C \left \| x-y \right \|^{\alpha }$对于$f$域中的所有$x$和$y$在$d$-维欧氏空间上的实值或复值函数$f$满足Hölder条件，或Hölder连续。
+	\label{definition:3.5}
+\end{definition}
+
+\begin{definition}[Hölder空间]
+	霍尔德空间$(C^{k,\alpha}(\Omega)$，其中$\Omega$是一些欧几里德空间和$k \ge 0$的开放子集是一个整数，由$\Omega$上的函数组成，这些函数具有$k$阶的连续导数，使得第$k$阶偏导数Hölder与指数$\alpha$连续，其中$0<\alpha \ge 1$。$C_{loc} ^{k,\alpha} (\Omega)$指上述条件适用于$\Omega$的任何紧子集。
+	\label{definition:3.6}
+\end{definition}
+
+\begin{theorem}[Caffarelli【45】]
+	如果$\Lambda$是凸的，那么Brenier势$u$是严格凸的；此外，
+	
+	(1) 如果$\lambda \ge f, g \ge \frac{1}{\lambda}$对于某些$\lambda>0$，则$u \in C_{loc} ^{1,\alpha} (\Omega)$ 。
+	
+	(2) 如果$f \in C_{loc} ^{k,\alpha} (\Omega)$ 和 $g \in C_{loc} ^{k,\alpha} (\Lambda)$ 对于$f,g>0$，则$u \in C_{loc} ^{k+2,\alpha} (\Omega)$ 和 $(k \le 0, \alpha \in(0,1))$ 。
+	
+	\label{theorem:3.4}
+\end{theorem}
+
+\subsubsection{非凸目标域}
+
+如果$\Lambda$不是凸的，并且存在光滑的$f$和$g$使得$u \notin C^1 (\Omega)$，那么OT映射$\bigtriangledown u$在奇点上是不连续的。
+
+
+\begin{definition}[次梯度]
+	给定一个开集$\Omega \subset \mathbb{R}^d$和一个凸函数$u: \Omega \to \mathbb{R}$，对于$x \in \Omega$，$u$在$\mathbf{x}$处的次梯度（次微分）定义如下：
+	\begin{equation*}
+		\partial u(x)=\left \{ p \in \mathbb{R}^n : u(z) \le u(x) + \left \langle p,z-x \right \rangle , \forall z \in \Omega \right \}    
+	\end{equation*}
+	
+	很明显，$u(x)$是一个闭凸集。几何上，如果$\rho \in u(x)$，那么超平面$l_{x,p}(z)=u(x)+\left \langle p,z-x \right \rangle $在$x$从下面接触$u$；也就是说，在$\Omega$和$l_{x,p}(x)=u(x)$上的$l_{x,p} \le u$，其中$l_{x,p}$是$u$在$\mathbf{x}$上的支撑平面。
+	
+	如果Brenier势$u$的次梯度$\partial u(x)$是一个单例的，那么他在$\mathbf{x}$上是可微的。我们根据点的子梯度的维数对点进行分类，并定义集合 $\sum _k (u) =\left \{ x \in \mathbb{R}^d \mid \dim \left [ \partial u(x) \right ] =k  \right \} ,k=0,1,2,\cdots ,d$。
+	
+	很明显，$\sum _0(u)$是正则点的集合，而$\sum _k(u)$，其中$k>0$，是奇异点的集合。我们还定义了在$\mathbf{x}$处的可达的子梯度如下：
+	\begin{equation*}
+		\partial _* u(x)=\left \{ \lim_{x \to \infty} \bigtriangledown u(x_k) \mid x_k \in \sum _0, x_k \to x \right \}    
+	\end{equation*}
+
+	众所周知，该子梯度等于可达子梯度的凸包：
+	\begin{equation*}
+		\partial u(x)=Convex \quad hull \quad \bigtriangledown _* u(x)
+	\end{equation*}
+	\label{definition:3.7}
+\end{definition}
+
+\begin{theorem}[规律性]
+	设$\Omega$，$\Lambda$是两个有界开集，设在$\Omega$和$\Lambda$之外的两个为零的概率密度$\f,g : \mathbb{R}^d \to \mathbb{R} ^+$，并且在$\Omega$和$\Lambda$上分别从零和无穷远处有界。用$T=\bigtriangledown u: \Omega \to \Lambda$表示由定理(\ref{theorem:3.1})提供的OT映射。然后存在两个相对封闭的集$\sum _{\Omega} \sebset \Omega$和$\sum _{\Lambda} \Lambda$与$\sum _{\Omega} = \sum _{\Lambda} =0$，这样$T: \Omega \setminus \sum _{\Omega} \to \Lambda \setminus \sum _{\Lambda}$是某些$\alpha > 0$的$C_{loc}^{0,\alpha}$的同态类。
+	
+	我们称$\sum_{\Omega}$为OT映射的奇异集$\bigtriangledown u : \Omega \to \Lambda$。图5说明了奇异集的结构，使用基于定理4.2的算法计算。我们得到的计算结果如下：
+	\begin{equation*}
+		\sum _0 = \Omega  \setminus \left \{ \sum _1 \cup \sum _2 \right \}, \sum _1=\bigcup_{k=0}^{3} \gamma _k, \sum _2=\left \{ x_0,x_1 \right \}    
+	\end{equation*}
+	
+	$x_0$的次梯度，$\partial u(x_0)$，是$\Lambda$的整个内孔，而$\partial u(x_1)$是阴影三角形。对于$\gamma _k (t)$上的每个点，$\partial u \left [ \gamma_k(t) \right ]$是$\Lambda$外的一条线段。$x_1$是$\gamma_1,\gamma_2$和$\gamma_3$的分岔点。$\sum_1$和$\sum_2$上的Brenier势是不可微的，它们上的OT映射$\bigtriangledown u$是不连续的。
+	\label{theorem:3.5}
+\end{theorem}
