@@ -22,7 +22,7 @@
 
 我们只考虑保留这些测度的映射。
 
-\begin{definition}[保留测度映射]
+\begin{definition}[保留测度映射]	\label{def:3.1}
 	如果映射 $T: X \to Y $ 对于任何可测量的集合$B \subset Y $，集合 $T^{-1}(B)$ 是 $\mu$ 可测量的和 $µ[T^{-1}(B)]=\nu(B)$，即，
 	\begin{equation}
 		\int_{T^{-1}(B)} f(x)dx =\int_B g(y)dy
@@ -30,7 +30,6 @@
 	\end{equation}
 
 	测度保持条件记为$T_{\# \mu}=\nu$，其中$T_{\#\mu}$ 是由$T$诱导的推向测度。
-	\label{def:3.1}
 \end{definition}
 
 给定一个成本函数 $c(x,y): X \times Y \to \mathbb{R} $，它表示将每个单位质量从源点移动到目标的成本，映射$T: X \to Y$的总传输成本被定义为
@@ -41,22 +40,20 @@
 
 Monge的OT问题来自于找到使总运输成本最小化的保测度映射。
 
-\begin{problem}[蒙日【43】;MP]
+\begin{problem}[蒙日【43】;MP]	\label{problem:3.1}
 	给定一个传输成本函数$c(x,y): X \times Y\to\mathbb{R}_{\ge 0}$，找到保测度映射 $X \to Y$，使总传输成本最小化：
 	\begin{equation}
 		(MP) \quad \underset{T_{\# \mu}=\nu}{min} \int_X c[x,T(x)]d\mu(x)  
 		\label{function:4}
 	\end{equation}
-	\label{problem:3.1}
 \end{problem}
 
-\begin{definition}[OT映射]
+\begin{definition}[OT映射]	\label{definition:3.2}
 	蒙日问题的解决方案被称为OT映射。一个OT映射的总运输成本被称为$\mu$和$\nu$之间的Wasserstein距离，记为$W_c(\mu,\nu)$。
 	\begin{equation}
 		W_c(\mu,\nu)= \underset{T_{\# \mu}=\nu}{min} \int_X c[x,T(x)]d\mu(x)  
 		\label{function:5}
 	\end{equation}
-	\label{definition:3.2}
 \end{definition}
 
 \subsection{Kontarovich的方法}
@@ -67,28 +64,25 @@ Monge的OT问题来自于找到使总运输成本最小化的保测度映射。
 	\label{function:6}
 \end{equation}
 
-\begin{problem}[Kontarovich;KP]
+\begin{problem}[Kontarovich;KP]	\label{problem:3.2}
 	给定一个传输成本函数$c(x,y): X \times Y\to\mathbb{R}_{\ge 0}$，找到保测度映射 $X \to Y$，使总传输成本最小化：
 	\begin{equation}
 		(KP) \quad W_c (\mu,\nu)= \underset{\rho \in \Pi(\mu,\nu)}{min} \int_{X \times Y} c(x,y)d\rho(x,y)  
 		\label{function:7}
 	\end{equation}
-	\label{problem:3.2}
 \end{problem}
 
 Kontarovich问题(KP)可以用LP方法来求解。由于LP等式的二元性，因此 Eq.(\ref{function:7})（KP方程）可以重新表述为对偶性问题(DP)，如下：
-\begin{problem}[对偶;DP]。
+\begin{problem}[对偶;DP]	\label{problem:3.3}
 	给定一个传输成本函数$c(x,y):X\times Y \to \mathbb{R}_{\ge0}$，找到使总运输成本最小化的联合概率测度$\rho(x,y): X \times Y \to \mathbb{R}_{\ge0}$
 	\begin{equation}
 		(DP) \quad \underset{\varphi , \psi }{max}\left [ \int_X \varphi (x)d\mu + \int_Y \psi (y)d\nu : \varphi(x)+\psi(y) \ge c(x,y) \right ]   
 		\label{function:8}
 	\end{equation}
-	\label{problem:3.3}
-	
 	等式(\ref{function:8})的最大值给出了Wasserstein距离。现有的WGAN模型大多是基于$L^1$代价函数下的对偶公式。
 \end{problem}
 
-\begin{definition}[c-转换]
+\begin{definition}[c-转换]	\label{definition:3.3}
 	$\varphi: X\to \mathbb{R}$ 的c-变换被定义为$\varphi ^ c: Y \to \mathbb{R}$ :
 	\begin{equation}
 			\varphi ^c(y)= \underset{x \in X }{inf}\left [ c(x,y)-\varphi(x) \right ]
@@ -100,13 +94,12 @@ Kontarovich问题(KP)可以用LP方法来求解。由于LP等式的二元性，�
 		(DP) \quad W_c(\mu , \nu) = \underset{\varphi }{max} \int_X \varphi (x)d\mu +\int _Y \varphi ^c (y)d\nu
 		\label{function:10}
 	\end{equation}
-	\label{definition:3.3}
 \end{definition}
 
 \subsection{Brenier方法}
 
 对于二次欧氏距离代价，用布雷内尔[44]证明了OT映射的存在性、唯一性和内在结构
-\begin{theorem}[Brenier【44】]
+\begin{theorem}[Brenier【44】]	\label{theorem:3.1}
 	假设$X$和$Y$是欧几里得空间$\mathbb{R}^d$的子集，运输代价是二次欧氏距离$c(x,y)=\frac{1}{2}\left \| x-y \right \| ^2 $。此外，$\mu$是绝对连续的，$\mu$和$\nu$有有限的二阶矩
 	\begin{equation}
 		\int _X \left \| x \right \| ^2 d\mu(x) + \int _Y \left \| y \right \| ^2 d\nu(x) < \infty 
@@ -128,10 +121,9 @@ Kontarovich问题(KP)可以用LP方法来求解。由于LP等式的二元性，�
 	 \end{equation}
  
  	对于 $\mathbb{R}^d$ 中的$L^2$运输成本 $c(x,y)=\frac{1}{2} \left \| x-y \right \|^2  $，c-变换和经典 Legendre变换具有特殊的关系。
-	\label{theorem:3.1}
 \end{theorem}
 
-\begin{definition}[Legendre变换]
+\begin{definition}[Legendre变换]	\label{definition:3.4}
 	给定一个函数$\varphi : \mathbb{R}^n \to \mathbb{R}$，其Legendre变换定义如下：
 	\begin{equation}
 		\varphi ^*(y)=\underset{x}{sup}\left [ \left \langle x,y \right \rangle -\varphi (x) \right ]  
@@ -143,16 +135,14 @@ Kontarovich问题(KP)可以用LP方法来求解。由于LP等式的二元性，�
 		\frac{1}{2}\left \| y \right \|^2-\varphi ^c (y)=\left [ \frac{1}{2} \left \| x \right \| ^2-\varphi (x) \right ]^*  
 		\label{function:15}
 	\end{equation}
-	\label{definition:3.4}
 \end{definition}
 
-\begin{theorem}[Briener极性因子分解【44】]
+\begin{theorem}[Briener极性因子分解【44】]	\label{theorem:3.2}
 	假设$X$和$Y$是欧几里得空间$\mathbb{R}^d$，$\mu$是绝对连续的Lebesgue测量，和映射$\varphi : X\to Y$推动$\mu$向前到$\nu$，$\varphi _{\#}\mu=\nu$，然后存在一个凸函数$u: X \to \mathbb{R}$，这样$\varphi=\bigtriangledown u(x)\circ s $ ，在$s: X \to X$是保测度的，$s_{\#}\mu=\mu$。此外，这个因子分解是唯一的。
-	\label{theorem:3.2}
 \end{theorem}
 
 以下定理在OT理论中是众所周知的
-\begin{theorem}[Villani【44】]
+\begin{theorem}[Villani【44】]	\label{theorem:3.3}
 	给定紧凸区域$\Omega \subset \mathbb{R}^d$的$\mu$和$\nu$，对于代价$c(x,y)=h(x-y)$存在一个OT方案$\rho$，且$h$严格凸。它是唯一的，并且形式为$(id，T_{\#})\mu \quad$ (id：标识映射)，前提是$\mu$是绝对连续的，而$\partial \Omega$可以忽略不计。此外，存在Kantorovich势$\varphi$，$T$可以表示为：
 	\begin{equation*}
 		T(x)=x-(\bigtriangledown h)^{-1} \left [ \bigtriangledown \varphi (x) \right ] 
@@ -168,7 +158,6 @@ Kontarovich问题(KP)可以用LP方法来求解。由于LP等式的二元性，�
 		u(x)=\frac{1}{2} \left \| x \right \| ^2 -\varphi (x)
 		\label{function:16}
 	\end{equation}
-	\label{theorem:3.3}
 \end{theorem}
 
 \subsection{OT映射的正则性}
@@ -177,24 +166,20 @@ Kontarovich问题(KP)可以用LP方法来求解。由于LP等式的二元性，�
 
 \subsubsection{凸目标区域}
 
-\begin{definition}[Hölder连续]
+\begin{definition}[Hölder连续]\label{definition:3.5}
 	当存在非负实常数$C$，$\alpha>0$时，使得$\left | f(x)-f(y) \right | \le C \left \| x-y \right \|^{\alpha }$对于$f$域中的所有$x$和$y$在$d$-维欧氏空间上的实值或复值函数$f$满足Hölder条件，或Hölder连续。
-	\label{definition:3.5}
 \end{definition}
 
-\begin{definition}[Hölder空间]
+\begin{definition}[Hölder空间]	\label{definition:3.6}
 	霍尔德空间$(C^{k,\alpha}(\Omega)$，其中$\Omega$是一些欧几里德空间和$k \ge 0$的开放子集是一个整数，由$\Omega$上的函数组成，这些函数具有$k$阶的连续导数，使得第$k$阶偏导数Hölder与指数$\alpha$连续，其中$0<\alpha \ge 1$。$C_{loc} ^{k,\alpha} (\Omega)$指上述条件适用于$\Omega$的任何紧子集。
-	\label{definition:3.6}
 \end{definition}
 
-\begin{theorem}[Caffarelli【45】]
+\begin{theorem}[Caffarelli【45】]	\label{theorem:3.4}
 	如果$\Lambda$是凸的，那么Brenier势$u$是严格凸的；此外，
 	
 	(1) 如果$\lambda \ge f, g \ge \frac{1}{\lambda}$对于某些$\lambda>0$，则$u \in C_{loc} ^{1,\alpha} (\Omega)$ 。
 	
 	(2) 如果$f \in C_{loc} ^{k,\alpha} (\Omega)$ 和 $g \in C_{loc} ^{k,\alpha} (\Lambda)$ 对于$f,g>0$，则$u \in C_{loc} ^{k+2,\alpha} (\Omega)$ 和 $(k \le 0, \alpha \in(0,1))$ 。
-	
-	\label{theorem:3.4}
 \end{theorem}
 
 \subsubsection{非凸目标域}
@@ -202,7 +187,7 @@ Kontarovich问题(KP)可以用LP方法来求解。由于LP等式的二元性，�
 如果$\Lambda$不是凸的，并且存在光滑的$f$和$g$使得$u \notin C^1 (\Omega)$，那么OT映射$\bigtriangledown u$在奇点上是不连续的。
 
 
-\begin{definition}[次梯度]
+\begin{definition}[次梯度]\label{definition:3.7}
 	给定一个开集$\Omega \subset \mathbb{R}^d$和一个凸函数$u: \Omega \to \mathbb{R}$，对于$x \in \Omega$，$u$在$\mathbf{x}$处的次梯度（次微分）定义如下：
 	\begin{equation*}
 		\partial u(x)=\left \{ p \in \mathbb{R}^n : u(z) \le u(x) + \left \langle p,z-x \right \rangle , \forall z \in \Omega \right \}    
@@ -221,17 +206,15 @@ Kontarovich问题(KP)可以用LP方法来求解。由于LP等式的二元性，�
 	\begin{equation*}
 		\partial u(x)=Convex \quad hull \quad \bigtriangledown _* u(x)
 	\end{equation*}
-	\label{definition:3.7}
 \end{definition}
 
-\begin{theorem}[规律性]
-	设$\Omega$，$\Lambda$是两个有界开集，设在$\Omega$和$\Lambda$之外的两个为零的概率密度$\f,g : \mathbb{R}^d \to \mathbb{R} ^+$，并且在$\Omega$和$\Lambda$上分别从零和无穷远处有界。用$T=\bigtriangledown u: \Omega \to \Lambda$表示由定理(\ref{theorem:3.1})提供的OT映射。然后存在两个相对封闭的集$\sum _{\Omega} \sebset \Omega$和$\sum _{\Lambda} \Lambda$与$\sum _{\Omega} = \sum _{\Lambda} =0$，这样$T: \Omega \setminus \sum _{\Omega} \to \Lambda \setminus \sum _{\Lambda}$是某些$\alpha > 0$的$C_{loc}^{0,\alpha}$的同态类。
+\begin{theorem}[规律性]\label{theorem:3.5}
+	设$\Omega$，$\Lambda$是两个有界开集，设在$\Omega$和$\Lambda$之外的两个为零的概率密度$f,g : \mathbb{R}^d \to \mathbb{R} ^+$，并且在$\Omega$和$\Lambda$上分别从零和无穷远处有界。用$T=\bigtriangledown u: \Omega \to \Lambda$表示由定理(\ref{theorem:3.1})提供的OT映射。然后存在两个相对封闭的集$\sum _{\Omega} \subset \Omega$和$\sum _{\Lambda} \Lambda$与$\sum _{\Omega} = \sum _{\Lambda} =0$，这样$T: \Omega \setminus \sum _{\Omega} \to \Lambda \setminus \sum _{\Lambda}$是某些$\alpha > 0$的$C_{loc}^{0,\alpha}$的同态类。
 	
 	我们称$\sum_{\Omega}$为OT映射的奇异集$\bigtriangledown u : \Omega \to \Lambda$。图5说明了奇异集的结构，使用基于定理4.2的算法计算。我们得到的计算结果如下：
 	\begin{equation*}
-		\sum _0 = \Omega  \setminus \left \{ \sum _1 \cup \sum _2 \right \}, \sum _1=\bigcup_{k=0}^{3} \gamma _k, \sum _2=\left \{ x_0,x_1 \right \}    
+		\sum _0 = \frac{\Omega}{\left \{ \sum _1 \cup \sum _2 \right \}} , \sum _1=\bigcup_{k=0}^{3} \gamma _k, \sum _2=\left \{ x_0,x_1 \right \}    
 	\end{equation*}
 	
 	$x_0$的次梯度，$\partial u(x_0)$，是$\Lambda$的整个内孔，而$\partial u(x_1)$是阴影三角形。对于$\gamma _k (t)$上的每个点，$\partial u \left [ \gamma_k(t) \right ]$是$\Lambda$外的一条线段。$x_1$是$\gamma_1,\gamma_2$和$\gamma_3$的分岔点。$\sum_1$和$\sum_2$上的Brenier势是不可微的，它们上的OT映射$\bigtriangledown u$是不连续的。
-	\label{theorem:3.5}
 \end{theorem}
