@@ -44,8 +44,14 @@
 \RequirePackage[tightLists=false]{markdown}
 \RequirePackage{setspace} % 行间距包
 \RequirePackage{caption} % 定义表格的对齐方式，默认是中间
-\RequirePackage{multirow}
-\RequirePackage{booktabs}
+\RequirePackage{multirow} % 表格跨行
+\RequirePackage{booktabs} % 表格
+\RequirePackage{pdfpages} % 插入pdf
+\RequirePackage{pifont} % 杂锦符号
+% \usepackage{graphicx} % 图
+% \usepackage{subfigure} % 子图
+% \usepackage{float} % 浮动
+
 
 % \RequirePackage{sectsty}%设置章节样式
 % \allsectionsfont{\mdseries\nohang\large\em}
@@ -59,7 +65,7 @@
 % 创建自己的颜色
 % \colorlet{macro}{blue!60!black}
 % \colorlet{env}{blue!70!black}
-% \colorlet{option}{purple}
+\colorlet{Tip}{red}
 
 % 定义所有的图片文件在 figures 子目录下
 \graphicspath{{figures/}}
@@ -172,6 +178,14 @@
     \setcounter{footnote}{0}%
   }
 \makeatother
+
+
+%----------------------------------------------------------------
+% 文献引用设置为上标
+\makeatletter
+  \def\@cite#1#2{\textsuperscript{[{#1\if@tempswa , #2\fi}]}}
+\makeatother
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                          初 始 化                             %
