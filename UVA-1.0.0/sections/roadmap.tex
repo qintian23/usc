@@ -1,0 +1,15 @@
+% !TeX root = ../uvanode.tex
+
+\section{技术路线、拟解决的问题及预期成果}
+
+\subsection{技术路线}
+
+本项目将针对智能体间有指令参与时，建立全新的多智能体系统模型，试图从数学分析的角度给出证明。技术路线的总体研究思路为：第一步，考虑个体之间具有不同的交互方式（即通信方式函数）下的多智能体系统建模；第二步，将所获得的多智能体系统理论成果应用于研究多无人机协同编队问题。具体技术路线的研究方法如下：
+
+\subsubsection{具有连续指令体导引的多智能体系统在有限时间内的集群性分析}
+
+对于连续指令情形，我们拟利用代数图论理论、矩阵论融合有限时间控制理论分析集群速度和集群最终相对位置等问题。通过引入排斥力，借用文献（Motsch S. and Tadmor E., A New Model for Self-organized Dynamics and Its Flocking Behavior, J Stat Phys, 144(2011) 923-947.）的思想和文献（Q.Ma,Z.Wang,G.YMiao,Second-order group consensus for multi-agent systems via pinning leader-following approach[J].Journal of the Franklin Institute,2014,351(3):1288-1300.）的漂亮方法给出智能体之间避免碰撞且能使得速度达到一致性的最佳条件。另外，我们拟通过对通信函数做一些的控制来寻找收敛速度和群体规模之间的关系以及给出收敛时间的上限估计。
+
+\subsubsection{多无人机协同编队研究方法}
+
+应用上述所获具有指令体导引的多智能体系统的有限时间集群分析的理论结果，结合数值仿真，揭示多无人机协同运动中集群的最终状态、演变规律等。在具体的直线编队的研究方面，应用具外部指令的自组织系统的有限时间理论研究无人机协同编队问题的集群特征，具体技术路线见图1.
