@@ -10,9 +10,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \RequirePackage[UTF8,scheme=chinese]{ctex} % 中文宏包
+
 \RequirePackage[
   top=2.54cm, bottom=2.54cm,
   left=3.18cm, right=3.18cm,
   headsep=3mm]{geometry} % 页边距 常规参数
 
-\RequirePackage{amsmath} 
+\RequirePackage{amsmath} % 希腊字母
+\RequirePackage{amsfonts} % 特殊字体样式
+\RequirePackage{amssymb} % 罗马数字
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                          自 定 义                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------
+% 数学的自定义
+\newtheorem{problem}{问题}[section]
+
+
+%---------------------------------------------------------------------------
+% 罗马数字样式定义
+\makeatletter
+  \newcommand{\rmnum}[1]{\romannumeral #1}
+  \newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+% 小写罗马数字 ： \rmnum{数字}
+% 大写罗马数字 ： \Rmnum{数字}
