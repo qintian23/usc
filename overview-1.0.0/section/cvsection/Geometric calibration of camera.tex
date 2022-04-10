@@ -1,0 +1,86 @@
+% !TeX root = ../computer version.tex
+
+\section{摄像机的几何标定}
+
+\subsection{习题}
+
+\begin{problem}
+    证明，在$\left | \mathcal{V} x  \right | ^2=1$约束下，使$\left | \mathcal{U} x  \right | $最小的向量$\mathbf{x}$就是对称矩阵
+    $\left | \mathcal{U}^T \mathcal{U}  \right | $ 和$\left | \mathcal{V}^T \mathcal{V}  \right | $ 上最小广义特征值对应的特征向量。
+    提示：等价于下面的没有约束的最小化问题：求$\mathbf{x}$使$E(x)=\left | \mathcal{V} x  \right |^2 \setminus \left | \mathcal{V} x  \right |^2 $最小。
+\end{problem}
+
+\begin{problem}
+    证明在3.1.1节中得到的 $2 \times 2$矩阵$\mathcal{U}^T \mathcal{U} $就是点集$p_i(i=1, \cdots , n)$的惯性矩。
+\end{problem}
+
+\begin{problem}
+    把3.1.1节中的直线拟合方法扩展到在$\mathbb{E}^3$空间寻找最佳拟合平面。
+\end{problem}
+
+\begin{problem}
+    推导下面两个式子的Hessian矩阵：$f_{2i-1}(\xi)=\tilde{u}_i (\xi) -u_i, f_{2i}(\xi)=\tilde{v}_i (\xi) -v_i(i=1,\cdots , n) $。
+\end{problem}
+
+\begin{problem}
+    欧拉角是这样定义的：先绕$z$轴旋转$\alpha$，再绕$y$轴旋转$\beta$，最后再绕$z$轴旋转$\gamma$。
+    证明欧拉角可以在原坐标系中用下面的矩阵表示：
+    $$
+    \begin{pmatrix}
+        \cos \alpha \cos \beta \cos \gamma -\sin \alpha \sin \gamma  & -\cos \alpha \cos \beta \sin \gamma -\sin \alpha \cos \gamma & \cos \alpha \sin \beta\\
+        \sin \alpha \cos \beta \cos \gamma +\cos \alpha \sin \gamma  & -\sin \alpha \cos \beta \sin \gamma +\cos \alpha \cos \gamma & \sin \alpha \sin \beta\\
+        -\sin \beta \cos \gamma                                      & \sin \beta \sin \gamma                                       & \cos \beta 
+    \end{pmatrix}
+    $$
+\end{problem}
+
+\begin{problem}
+    证明 Rodrigues公式。设$\mathcal{R}$是绕着$u$的旋转，转角为$\theta $，则
+    $$\mathcal{R}x=\cos \theta x + \sin \theta u \times x +(1-\cos \theta)(u \cdot x)u$$
+    提示：旋转不会改变向量在与旋转轴垂直的平面上的透影值。
+\end{problem}
+
+\begin{problem}
+    利用 Rodrigues定理证明，$\mathcal{R}$的坐标变换矩阵为
+    $$
+    \begin{pmatrix}
+        u^2(1-c)+c & uv(1-c)-ws & uw(1-c)+vs \\
+        uv(1-c)+ws & v^2(1-c)+c & vw(1-c)-us \\
+        uw(1-c)-vs & vw(1-c)+us & w^2(1-c)+c
+    \end{pmatrix}
+    $$
+    其中，$c=\cos \theta$和$s=\sin \theta$。
+\end{problem}
+
+\begin{problem}
+    若已知摄像机内参数，如何从3.5节中介绍的向量$n'$求摄像机外参数。提示：旋转矩阵的各列都是单位向量。
+\end{problem}
+
+\begin{problem}
+    假设用摄像机拍摄了n条 Pl\"ucker坐标已知的刻线，
+    \\(a) 证明若$u\ge 9$，可以恢复第2章习题中的投影矩阵$\widetilde{\mathcal{M}} $；
+    \\(b) 若$\widetilde{\mathcal{M}} $已知，则投影矩阵$\mathcal{M}$也能用最小二乘法得到。
+    提示：$\mathcal{M}$的各列$m_i$分别表示三个平面$\Pi_i$，而$\mathcal{M}$的各行表示三条直线。利用线和平面间的关系可以写出$\widetilde{m}_i $的约束。
+\end{problem}
+
+\subsection{编程作业}
+
+\begin{problem}
+    用最小二乘法在三维空间中找到点集的最佳拟合平面。
+\end{problem}
+
+\begin{problem}
+    在平面$\mathbb{R}^2$内找到点集$(x_i,y_i)^T(i=1,\cdots ,n)$的最小二乘拟合的圆锥曲线 $ax^2+bxy+cy^2+dx+ey+f=0$。
+\end{problem}
+
+\begin{problem}
+    实现3.2节中介绍的线性标定法。
+\end{problem}
+
+\begin{problem}
+    实现3.3节中介绍的带径向畸变的标定算法。
+\end{problem}
+
+\begin{problem}
+    实现3.4节中介绍的非线性标定法。
+\end{problem}
