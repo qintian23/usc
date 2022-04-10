@@ -1,0 +1,119 @@
+% !TeX root = ../computer version.tex
+
+\section{摄像机的几何模型}
+
+\subsection{习题}
+
+\begin{problem}
+    $B$是坐标系$A$依次绕$i_A$，$j_A$和$k_A$转$\theta$角以后的坐标系，求旋转矩阵$_{A}^{B}R$。 
+\end{problem}
+
+\begin{problem}
+    证明旋转矩阵有如下性质：(a)旋转矩阵的逆和转置相同；(b)行列式为1。
+\end{problem}
+
+\begin{problem}
+    证明刚体变换的矩阵在矩阵乘法作用下是群。 
+\end{problem}
+
+\begin{problem}
+    $^{A}T$ 表示坐标系$A$中变换$T$的矩阵，
+    $$^{A}T =\begin{pmatrix}
+        ^{A}R & ^{A}t \\
+        0^T & 1
+       \end{pmatrix}$$
+    用$^{A}T$与$A$合$B$之间的刚体变换关系求$T$在$B$下的表示$^{B}T$。
+\end{problem}
+
+\begin{problem}
+    坐标系$A$做刚体变换$T$后得到$B$，证明$^{B}P=T^{-1A}P$
+\end{problem}
+
+\begin{problem}
+    证明，坐标系$F$绕$k$轴旋转$\theta$可以表示为
+    $$^{F}P'=R^FP, R=\begin{pmatrix}
+        \cos {\theta } & -\sin {\theta } & 0 \\
+        \sin {\theta } & \cos {\theta } & 0\\
+        0 & 0 & 1
+       \end{pmatrix}$$
+\end{problem}
+
+\begin{problem}
+    证明坐标系的刚体变换保持距离和角度。 
+\end{problem}
+
+\begin{problem}
+    证明：若摄像机坐标系有偏歪，两个图像轴的夹角不是90度，则方程(2.11)变为方程(2.12)。
+\end{problem}
+
+\begin{problem}
+    用$O$表示光心在参考坐标系内的齐次坐标，$M$表示对应的透视投影矩阵，证明$M(O)=0$。
+\end{problem}
+
+\begin{problem}
+    证明定理1的条件是必要的。 
+\end{problem}
+
+\begin{problem}
+    证明定理1的条件是充分的。这里的定理1和Faugeras(1993)及Heyden(1995)有一些区别。$Det(A)\ne 0$改为了$a_3\ne 0$，显然，$Det(A)\ne 0$推出$a_3\ne 0$。
+\end{problem}
+
+\begin{problem}
+    $^{A}\Pi$ 表示坐标系A上的平面$\Pi$齐次坐标，坐标系$B$中它的表示$^{B}\Pi$是什么？
+\end{problem}
+
+\begin{problem}
+    $^{A}Q$ 表示坐标系A内的一个二次曲面的对称矩阵，坐标系$B$中它的表示$^{B}Q$是什么？
+\end{problem}
+
+\begin{problem}
+    证明定理2。 
+\end{problem}
+
+\begin{problem}
+    \textbf{线性Pl{\"u}cker坐标系}。$\mathbb{R}^4$空间上的两个向量$u$，$v$的外积定义为
+    $$u\wedge v \overset{\text{def}}{=}\begin{pmatrix}
+        u_1v_2-u_2v_1\\
+        u_1v_3-u_3v_1\\
+        u_1v_4-u_4v_1\\
+        u_2v_3-u_3v_2\\
+        u_2v_4-u_4v_2\\
+        u_3v_4-u_4v_3
+       \end{pmatrix} $$
+    在给定的坐标系中，$A$和$B$表示$\mathbb{E}^3$中的两个向量，则$L=A\wedge B$称为$A$和$B$交线的坐标。
+    \\(a) 记$L=(L_1,L_2,L_3,L_4,L_5,L_6)^T$，$O$表示坐标原点，$H$是$O$在$L$上的投影位置。用$\overrightarrow{OA} $和$\overrightarrow{OB} $表示的非齐次坐标。证明，
+        $\overrightarrow{AB} = -(L_3, L_5, L_6)^T$和$\overrightarrow{OB} \times \overrightarrow{OB} =\overrightarrow{OH} \times \overrightarrow{AB} = (L_4, -L_2, L_1)^T$，
+        并且直线的$\mathbb{R}^4$坐标满足二次约束$L_1L_6-L_2L_5+L_3L_4=0$。                          
+    \\(b) 证明$A$和$B$在直线$L$上移动只改变$L$的全局比例，Pl{\"u}cker坐标是齐次坐标。                    
+    \\(c) 证明对$\mathbb{R}^4$上的点$x,y,z$ 和$t$有                                                   
+        $(x \wedge y) \cdot (z \wedge t)=(x \wedge z)(y \wedge t)-(x \wedge t)(y \wedge z)$     
+    \\(d) 证明Pl{\"u}cker坐标$L$表示的直线和它在图像上的齐次坐标$l$满足如下关系
+        \begin{equation}
+            \rho l =\widetilde{M} L, \widetilde{M} \overset{\text{def}}{=} \begin{pmatrix}
+                (m_2 \wedge m_3)^T \\
+                (m_3 \wedge m_1)^T \\
+                (m_1 \wedge m_2)^T
+               \end{pmatrix}
+        \end{equation}
+        $m^T_1$，$m^T_2$和$m^T_3$表示$M$的各行，$\rho$是比例系数。提示：$L$是过$A$和$B$的直线，$A$和$B$的投影点用$a$和$b$表示，齐次坐标分别是$a$，$b$。
+        $a$，$b$在$l$上，用$\mathbf{l}$表示$l$的齐次坐标，则有$l \cdot a = l \cdot b =0$。
+    \\(e) 已知$L$的Pl{\"u}cker坐标为$L=(L_1,L_2,L_3,L_4,L_5,L_6)^T$，点$P$的齐次坐标向量为$\mathbf{P}$。证明$\mathbf{P}$在$L$上的充要条件是
+        \begin{equation*}
+            \mathcal{L} \mathbf{P}=0,\mathcal{L}\overset{def}{=} \begin{pmatrix}
+                0    & L_6  & -L_5 & L_4 \\
+                -L_6 & 0    & L_3  & -L_2 \\
+                L_5  & -L_3 & 0    & L_1 \\
+                -L_4 & L_2  & -L_1 & 0
+               \end{pmatrix}
+        \end{equation*}
+    \\(f) $\Pi$是平面$\Pi$的齐次坐标，证明直线$L$在平面$\Pi$上的充要条件是
+        \begin{equation*}
+            \mathcal{L^*} \Pi=0,\mathcal{L^*}\overset{def}{=} \begin{pmatrix}
+                0    & L_1  & L_2  & L_3 \\
+                -L_1 & 0    & L_4  & L_5 \\
+                -L_2 & L_4  & 0    & L_6 \\
+                -L_3 & L_5  & -L_6 & 0
+            \end{pmatrix}
+        \end{equation*}
+\end{problem}
+
