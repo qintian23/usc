@@ -1,0 +1,97 @@
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesPackage{artracom}[2014/10/01 v1.0 LaTeX macros package]%
+%---------------------------------------------------------------------------%
+%->> Declare options
+%---------------------------------------------------------------------------%
+%-
+%-> Handle non-implemented options
+%-
+\DeclareOption*{%
+    \PackageWarning{artracom}{Unknown option '\CurrentOption'}%
+}
+%-
+%-> Terminates all options processing
+%-
+\ProcessOptions\relax%
+%---------------------------------------------------------------------------%
+%->> User added packages
+%---------------------------------------------------------------------------%
+%- this part adds normal packages
+\RequirePackage{chemfig}% draw 2D chemical structures
+\RequirePackage[version=4]{mhchem}% typeset chemical formulae [mhchem|chemformula]
+%- this part adds packages that should be loaded at the very end
+\AtEndPreamble{%
+    %\RequirePackage{cleveref}% clever cross-referencing
+}
+% -------------------------------------------------- --------------%
+% ->> 用户定义的命令
+% -------------------------------------------------- --------------%
+% -
+% -> 一般信息
+% -
+% - \def\macroname#1<sep1>#2<sep2>{宏内容，使用参数#1，#2 ...}
+% - 每个参数 #n 是与
+% - 宏定义，包括分隔符。没有分隔符，然后是 Plain TeX
+% - 宏被用作 LaTeX 宏（没有默认参数）：
+% - \def\macroname#1#2#3{...} -> \newcommand{macroname}[3]{...}
+% - \def：定义一个新的或预定义的命令，相当于
+% - \providecommand{宏名}{}%
+% - \renewcommand*{宏名}[参数数量][默认值]{定义}
+% - \long\def：定义一个新的或预定义的命令，相当于
+% - \providecommand{宏名}{}%
+% - \renewcommand{宏名}[参数数量][默认值]{定义}
+% - \newcommand：定义一个新命令，如果已经定义则出错
+% - \renewcommand: 重新定义一个预定义的命令，如果还没有定义则会出错
+% - \providecommand：定义一个新命令，如果已经定义，保留旧定义
+% - *-forms: 对缺少的参数或包含 \par 的参数启用错误检查
+% - *-forms 通常是在定义命令时使用的更好的形式
+% - 参数，除非这些参数中的任何一个旨在包含整个段落
+% - 文本。如果您需要使用非星形表格，那么您应该询问是否
+% - 参数最好被视为适当定义的环境的内容。
+% -
+% -> 数学函数
+% -
+% - 国际标准布局规则（来自 isomath 包）
+% - 总体规则是表示数学量或变量的符号应该
+% - 斜体，代表单位或标签的符号是单斜体（罗马）。
+% - 向量和矩阵的符号是粗斜体，张量的符号是
+% - 无衬线粗斜体。
+% - 上述规则同样适用于来自希腊语和
+% - 拉丁字母。
+% - 更多信息可以在 <<The LaTeX 数学指南>>
+% - 但是，数学字体因字段而异。保持一致的排版
+% - 并且易于适应，最好为
+% - 每个数学类别中的变量。 
+%\providecommand{\Scalar}[1]{#1}% scalar 是正常的数学排版，斜体
+\providecommand{\Vector}[1]{\boldsymbol{#1}}% 粗斜体的一般向量
+\providecommand{\unitVector}[1]{\boldsymbol{\mathbf{#1}}}% 粗体罗马单位向量
+\providecommand{\Matrix}[1]{\boldsymbol{\mathbf{#1}}}% 粗体罗马矩阵
+\providecommand{\unitMatrix}[1]{\boldsymbol{\mathbf{#1}}}% 单位矩阵以粗体罗马
+\providecommand{\Tensor}[1]{\boldsymbol{\mathsf{#1}}}% 张量无衬线粗斜体
+\providecommand{\unitTensor}[1]{\boldsymbol{\mathsf{#1}}}% 无衬线粗体标识张量
+\providecommand{\Unit}[1]{\,\mathrm{#1}}% 罗马单位
+\providecommand{\Const}[1]{\mathrm{#1}}% 数学常数，函数
+\providecommand{\Set}[1]{\mathbb{#1}}% 特殊集合以黑板粗体显示
+\providecommand{\Div}{\operatorname{div}}% 散度运算符
+\providecommand{\Order}{\operatorname{O}}% 订单运算符
+\providecommand{\Trace}{\operatorname{tr}}% 跟踪运算符
+\providecommand{\Diag}{\operatorname{diag}}% 对角线
+\providecommand{\Def}{\operatorname{def}}% 定义
+\providecommand{\Loptr}{\operatorname{\mathcal{L}}}% 空间运算符
+\providecommand{\Toptr}{\operatorname{\mathcal{LL}}}% 时间运算符
+\providecommand{\Soptr}{\operatorname{\mathcal{S}}}% 解算子
+\providecommand{\Des}[1]{\mathrm{#1}}% 罗马类型的描述性上标和下标 
+\providecommand{\Rev}[1]{\begingroup\color{blue}{#1}\endgroup}% 修订高亮
+% -
+% -> 图形长度因子
+% -
+\providecommand*{\onef}{0.6}% 用于单个数字
+\providecommand*{\twof}{0.45}% 用于两个子图
+\providecommand*{\trif}{0.32}% 三个子图
+% -
+% -> 在方程编号前添加点
+% -
+\newcommand{\adddotsbeforeeqnnum}{\def\maketag@@@##1{\hbox{\m@th\normalfont\dots\ ##1}}}%
+%---------------------------------------------------------------------------%
+\endinput
+
