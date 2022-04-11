@@ -258,6 +258,17 @@
     \fi
 }
 %---------------------------------------------------------------------------%
+%->> 新环境
+%---------------------------------------------------------------------------%
+%- 定义中文关键字
+\newcommand{\keywords}[1]{%
+    \vspace{\baselineskip}
+    \noindent {\bfseries \usc@label@ch@keywords} #1}
+%- 定义英文关键字
+\newcommand{\KEYWORDS}[1]{%
+    \vspace{\baselineskip}
+    \noindent {\bfseries \usc@label@en@keywords} #1}
+%---------------------------------------------------------------------------%
 %->> Structure elements
 %---------------------------------------------------------------------------%
 \ifusc@plain%
@@ -311,8 +322,9 @@
 %- section
 \ctexset {
     section = {
-        format = \centering\zihao{4}\sffamily,
-        number = {\chinese{section}},
+        format = \zihao{3}\sffamily,
+        % number = {\chinese{section}},
+        numberformat = \rmfamily,
         aftername = \quad,
         beforeskip = {24pt},
         afterskip = {6pt},
@@ -404,7 +416,7 @@
         \begingroup
             \parindent \z@ \rightskip \@pnumwidth
             \parfillskip -\@pnumwidth
-            \leavevmode \zihao{4}\sffamily
+            \leavevmode \zihao{3}\sffamily
             \advance\leftskip\@tempdima
             \hskip -\leftskip
             #1\nobreak
