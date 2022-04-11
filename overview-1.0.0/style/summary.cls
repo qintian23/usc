@@ -10,10 +10,11 @@
 % -------------------------------------------------- --------------%
 \NeedsTeXFormat{LaTeX2e} % 告诉编译器该包适用于LaTeX2e版本
 \newcommand*\@iflatexlater{\@ifl@t@r\fmtversion}%
-\@iflatexlater {2017/01/01}{ % latex -v
-    \ClassError {summary}{TeXLive/MikTex >= 2017 is required ...}{} %
+\@iflatexlater{2017/01/01}{}{%
+    \ClassError{ucasthesis}{TeXLive/MikTex >= 2017 is required ...}{}%
+    
 }
-\ProvidesClass{summary}[2022/04/11 v1.0 Latex document class] %
+\ProvidesClass{summary}[2022/04/11 v1.0 LaTeX document class] %
 %---------------------------------------------------------------------------%
 %->> 选项声明
 %---------------------------------------------------------------------------%
