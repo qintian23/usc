@@ -7,6 +7,7 @@ LaTeX可供参考模板：
 1. [电子科大学位论文](https://github.com/JosephChenHub/UESTC_thesis_XeLaTeX)
 2. [浙江大学文献综述](https://github.com/corenel/ZJUProposal)
 3. [中国科学院大学学位论文](https://github.com/mohuangrui/ucasthesis)
+4. [中国科学院的博士/硕士毕业论文模板](https://github.com/iphyer/UCASThesisTemplete)
 
 ## 计算机视觉
 

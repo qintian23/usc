@@ -477,7 +477,7 @@
     \newcommand{\bibstyle@authoryear}{\bibpunct{(}{)}{;}{a}{,}{,}}%
     \newcommand{\bibstyle@alpha}{\bibpunct{[}{]}{,}{n}{,}{,}}%
     \ifartx@numbers% enable numbered citation style
-        \RequirePackage[sort&compress]{natbib}% numbered citation mode
+        \RequirePackage[numbers,sort&compress]{natbib}% numbered citation mode
         \ifartx@super% enable superscripted citation style
             \citestyle{super}%
         \else
