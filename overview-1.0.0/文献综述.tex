@@ -1,11 +1,66 @@
+% !Mode:: "TeX:UTF-8"
+
+% 文献综述.
+% Author: Zhu Liucheng
+% E-mail: 2576950110@qq.com
+% Date : 2022/4/11
+
+% -------------------------------------------------- --------------%
+% ->> 文档类声明
+% -------------------------------------------------- --------------%
 \documentclass[twoside]{style/uscthesis}
-
-%\usepackage{style/summary} % 引用自定义布局
-
+% - 多个可选参数：
+% - [<oneside|twoside|print>]% 单面电子印刷、双面电子印刷或纸质印刷
+% - [fontset=<adobe|none|...>]% 指定字体集而不是自动检测
+% - [scheme=plain]% 国际学生论文写作
+% - [draftversion]% 显示草稿版本信息
+% - [ctex 书籍类的标准选项：草稿|纸张大小|字体大小|...]%
+% -------------------------------------------------- --------------%
+% ->> 文档设置
+% -------------------------------------------------- --------------%
+\usepackage[authoryear,list]{style/artratex}% 文档设置
+% - 用法：\usepackage[option1,option2,...,optionN]{artratex}
+% - 多个可选参数：
+% - [bibtex|biber]% 设置参考书目处理器和包
+% - [<numbers|super|authoryear|alpha>]% 设置引用和参考风格
+% - <数字>：文本：琼斯 [1]；括号内：[1]
+% - <super>：文本：琼斯上标[1]；括号：上标 [1]
+% - <作者年份>：文本：琼斯 (1995)；括号：（琼斯，1995）
+% - <alpha>：文本：不可用；括号：[Jon95]
+% - [geometry]%​​ 通过几何包重新配置页面布局
+% - [lscape]% 提供横向布局环境
+% - [xhf]% 通过 fancyhdr 包禁用页眉和页脚
+% - [color]% 通过 xcolor 包提供颜色支持
+% - [background]% 启用页面背景
+% - [tikz]% 通过 tikz 包提供复杂的图表
+% - [table]% 通过 ctable 包提供复杂的表
+% - [list]% 为算法和编码提供增强的列表环境
+% - [math]% 启用一些额外的数学包
+% - [xlink]% 禁用链接颜色
+\usepackage{style/artracom} % 用户定义的命令
+% -------------------------------------------------- --------------%
+% ->> 文件包含
+% -------------------------------------------------- --------------%
+% \includeonly{Tex/Chap_1,...,Tex/Chap_N}% 选择文件编译
+% -------------------------------------------------- --------------%
+% ->> 文件内容
+% -------------------------------------------------- --------------%
+% -
+% -> 标题页信息
+% -
+\input{section/summary/Frontinfo}
 \begin{document}
-    %header
-    
-
+    \frontmatter
+    \input{section/summary/Frontmatter}
+    {% content list region
+        \linespread{1.2}% local line space
+        \intobmk*{\cleardoublepage}{\contentsname}% add link to bookmark
+        \tableofcontents% content catalog
+        \intobmk*{\cleardoublepage}{\listfigurename}% add link to bookmark
+        \listoffigures% figure catalog
+        \intobmk*{\cleardoublepage}{\listtablename}% add link to bookmark
+        \listoftables% table catalog
+    }
     %-------------------------------------------------------
     % Main Body
 
