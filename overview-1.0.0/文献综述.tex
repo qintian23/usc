@@ -76,11 +76,11 @@
     %-
     %-> Backmatter: bibliography, glossary, index
     %-
-    \intotoc*{\cleardoublepage}{\bibname}% add link to toc
-    \artxifstreq{\artxbib}{bibtex}{% enable bibtex
-        \bibliography{ref/refs}% bibliography
-    }{%
-        \printbibliography% bibliography
-    }
+	\intotoc*{\cleardoublepage}{\bibname}% add link to toc
+	\artxifstreq{\artxbib}{bibtex}{% enable bibtex
+		\bibliography{ref/refs}% bibliography
+	}{%
+		\printbibliography% bibliography
+	}
 
 \end{document}
