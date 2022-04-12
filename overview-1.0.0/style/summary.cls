@@ -333,7 +333,7 @@
 %- subsection
 \ctexset {
     subsection = {
-        format = \sffamily,
+        format = \zihao{-3}\sffamily, % 二级标题，粗黑体小三号，编号为1.1
         numberformat = \rmfamily,
         aftername = \quad,
         beforeskip = {12pt},
