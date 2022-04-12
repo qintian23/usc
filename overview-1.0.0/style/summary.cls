@@ -322,7 +322,7 @@
 %- section
 \ctexset {
     section = {
-        format = \zihao{3}\sffamily,
+        format = \centering \zihao{3}\sffamily,
         % number = {\chinese{section}},
         numberformat = \rmfamily,
         aftername = \quad,
