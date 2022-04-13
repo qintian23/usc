@@ -1,0 +1,18 @@
+\documentclass[a4paper,onecolumn,12pt]{style/cite}
+
+\usepackage{style/citestyle} % 引用自定义布局
+
+\begin{document}
+
+	\input{section/OMT/Frontmatter.tex}
+	   \pagenumbering{Roman} %设置罗马数字页码
+	   \newpage
+	   \setcounter{page}{1}
+       \tableofcontents
+	   \newpage
+	   \pagenumbering{arabic} %设置阿拉伯数字页码
+	   \setcounter{page}{1}
+	\input{section/OMT/Introduction.tex}
+	
+
+\end{document}
