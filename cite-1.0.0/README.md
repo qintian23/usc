@@ -10,3 +10,5 @@
 6. 一种用于稳健重建和简化2D形状的最优传输方法 An Optimal Transport Approach to Robust Reconstruction and Simplification of 2D Shapes
 7. 最优传输的多尺度方法 A Multiscale Approach to Optimal Transport
 8. 最优传输 Optimal Transport
+9. 计算最优传输  Computational Optimal Transport
+

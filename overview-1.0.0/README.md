@@ -3,7 +3,6 @@
 对于每一篇论文都会看一篇summary.cls样式的文档格式，然后集成到overview.cls文档中。
 论文来源及选读原因要在一开始便写明白！选文将会先放置在外部的专门文件夹中，每开一篇即存进一篇。
 
-
 ## 候选论文
 
 1. A Perfect Match Condition for Point-Set Matching Problems Using the Optimal Mass Transport Approach. file:///G:/zuoye/graduate/OTCV/paper/English/%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E8%B4%A8%E9%87%8F%E4%BC%A0%E9%80%92%E6%96%B9%E6%B3%95%E7%9A%84%E7%82%B9%E9%9B%86%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E7%9A%84%E5%AE%8C%E7%BE%8E%E5%8C%B9%E9%85%8D%E6%9D%A1%E4%BB%B6.pdf
