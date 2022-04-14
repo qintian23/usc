@@ -16,3 +16,4 @@
 
 1. 最优传输理论与计算：**顾险峰，雷娜**。
 2. 经典教材：[Cédric Villani](https://cedricvillani.org/)；[Alessio Figalli](https://people.math.ethz.ch/~afigalli/home)；A.D. Alexandrov；[Fillippo Santambrogio](http://math.univ-lyon1.fr/~santambrogio/)；[Gabriel Peyré](http://www.gpeyre.com/)；[Marco Cuturi](http://marcocuturi.net/)；[Alfred Galichon](http://alfredgalichon.com/coursesandtalks/)；Pierre Henry-Labordere；Pierre-Andre Chiappori
+3. 主要论文：丘成桐，汪徐家，Brenier
