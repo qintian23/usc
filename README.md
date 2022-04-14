@@ -18,3 +18,13 @@ LaTeX可供参考模板：
 计算机视觉主要的诀窍在于从图像或图像序列中获取对世界的描述。
 
 运动求取结构（Struct from motion）技术可以从图像序列中获取所见物体的描述以及摄像机的运动规律。
+
+## 最优传输
+
+Filippo Santambrogio. Optimal transport for applied mathematicians. Birkhauser,2015.
+Alfred Galichon. Optimal transport methods in economics. Princeton University Press, 2016.
+Cedric Villani. Topics in optimal transportation. American Mathematical Society, 2003.
+Cedric Villani. Optimal transport: old and new. Springer-Verlag, 2009.
+Gabriel Peyre and Marco Cuturi. Computational optimal transport. Available at https://arxiv.org/abs/1803.00567.
+Pierre Henry-Labordere. Model-free Hedging: A Martingale Optimal Transport Viewpoint. Chapman and Hall, 2017.
+Pierre-Andre Chiappori. Matching with transfers: the economics of love and marriage. Princeton University Press, 2017.
