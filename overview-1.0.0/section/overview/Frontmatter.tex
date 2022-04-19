@@ -29,9 +29,11 @@
 
 尤其随着计算机运算能力的提升、图像处理加速芯片的发展，图像匹配算法数量越来越多，其类型也越来越丰富。随之产生了两个问题：新方法与旧方法的取舍；如何在现有理论指导下
 设计更适用、准确、鲁棒的高性能匹配算法。为了回答这两个问题，我们有必要系统的回顾和评估过去和现在的图像匹配算法。我在检索相关的文献时，发现了一个奇怪的现象：如今大热的并且在理论上
-对于图像匹配算法的发展具有巨大的推进潜力的最优传输理论方面的内容常常被一些重要的文献综述所忽略。因此，本文主要讨论基于最优传输理论的图像匹配算法。
+对于图像匹配算法的发展具有巨大的推进潜力的最优传输理论方面的内容常常被一些重要的文献综述\cite{ma2021image}所忽略。因此，本文主要讨论基于最优传输理论的图像匹配算法。
 
-
+本文首先回顾了遵循着从手工设计特征到深度学习的图像匹配算法的发展路线，并简要分析了其中各个阶段的算法的特点。然后，详细地介绍最优传输理论在视觉算法上的
+进展，其中涉及计算最优传输映射的方法、计算Wasserstein距离的方法的概述；接着，列举几个基于最优传输理论的图像匹配应用，并且与经典的解决方案相比较，以此了解OT在视觉算法中的意义。
+最后，我们总结了图像匹配技术的现状，并对未来的工作进行了富有洞察力的讨论和展望。本调查可作为（但不限于）图像匹配及相关领域的研究人员和工程师参考。
 
 
 \keywords{图像匹配，共形映射，最优传输理论，最佳质量传输映射，Wasserstein距离，曲面配准，手工设计特征，深度学习}% 中文关键词
@@ -52,7 +54,32 @@
 \vspace*{20pt}
 
 \noindent
-\textbf{Abstract} : This paper is a help documentation for the \LaTeX{} class uscthesis, which is  a thesis template for the University of South of China. The main content is about how to use the uscthesis, as well as how to write thesis efficiently by using \LaTeX{}.
+\textbf{Abstract} : Image matching is a key step in virtual image reconstruction, a core process of visual recognition, and a 
+central operation module of image retrieval. With the rapid development of visual algorithms in the past decades, image 
+matching-based applications have emerged one after another. From satellite remote sensing image registration to nano-scale parts 
+registration, the basic problem of image matching is ubiquitous in scientific research, social needs, industrial manufacturing 
+and so on. The definition of image matching is generally described as follows: images of the same photographic project, such as 
+medical images, can be taken from any angle of light intensity and frequency under occlusion, multi-posture, etc. There are 
+corresponding relationships among the images of the same project, such as content, structure, feature, color and texture,  
+while image matching focuses on consistency and similarity analysis in these relationships.
+
+Especially with the improvement of computer computing ability and the development of image processing acceleration chip, 
+there are more and more image matching algorithms and their types are more and more abundant. Two problems arise: the choice 
+between the new method and the old one; How to design a more applicable, accurate and robust high performance matching algorithm 
+under the guidance of the existing theory. In order to answer these two questions, it is necessary to systematically review and 
+evaluate past and present image matching algorithms. When I retrieve the relevant literature, I found a strange phenomenon: 
+the hot and theoretically promising aspects of optimal transmission theory for the development of image matching algorithms are 
+often ignored by some important literature reviews\cite{ma2021image}. Therefore, this paper mainly discusses image matching 
+algorithms based on optimal transmission theory.
+
+This paper first reviews the development of image matching algorithms that follow the path from manual design features to in-depth 
+learning, and briefly analyses the characteristics of the algorithms at each stage. Then, the progress of optimal transmission 
+theory in visual algorithms is introduced in detail, including an overview of the methods for calculating optimal transmission 
+mappings and Wasserstein distances. Next, several image matching applications based on optimal transmission theory are listed and 
+compared with classical solutions to understand the significance of OT in visual algorithms. Finally, we summarize the current 
+status of image matching technology, and make insightful discussions and prospects for future work. This survey can be used as a 
+reference for (but not limited to) researchers and engineers in image matching and related fields.
+
 
 \KEYWORDS{Image matching, Conformal mapping, Optimal transmission theory,  Optimal mass transport mapping, Wasserstein distance, Surface registration, Handcrafted feature, Deep learing}% 英文关键词
 %---------------------------------------------------------------------------%
