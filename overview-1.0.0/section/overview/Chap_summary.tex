@@ -27,7 +27,9 @@
 7. 消融实验
 
 而对于视频流上的图像匹配算法评估方法
-( 1) Inception Score(IS)[38]广泛用于生成模型中.IS通过利用Inception-V3模型[3的类别预测信息来评估生成样本的质量和多样性.
-(2) Frechet Inception Distance(FID)[40]也是一个广泛使用在生成模型上的指标.FID可以评估生成图像的质量,因为它能捕获生成样本与真实样本的相似性,并与人类判断相关联.
-(3)Video variant of FID(FID4Video)[41]评估视频的质量和连贯性.本文使用一个预训练的视频识别模型I3D1]对视频序列提取特征.然后,对这些特征计算 FID4 Video.
+(1)Inception Score(IS)\cite{salimans2016improved}广泛用于生成模型中.IS通过利用Inception-V3模型\cite{szegedy2016rethinking}的类别预测信息来评估生成样本的质量和多样性.
+
+(2)Frechet Inception Distance(FID)\cite{heusel2017gans}也是一个广泛使用在生成模型上的指标.FID可以评估生成图像的质量,因为它能捕获生成样本与真实样本的相似性,并与人类判断相关联.
+
+(3)Video variant of FID(FID4Video)\cite{carreira2017quo}评估视频的质量和连贯性.本文使用一个预训练的视频识别模型I3D\cite{carreira2017quo}对视频序列提取特征.然后,对这些特征计算 FID4 Video.
 一般而言,对于IS指标,值越大代表着翻译的图像质量越好﹔对于FID 和 FID4 Video这两种指标,值越小意味着翻译的图像或视频的质量越好.
