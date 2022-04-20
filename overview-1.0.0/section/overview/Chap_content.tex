@@ -48,11 +48,26 @@ Wasserstein距离不仅给出了两个分布之间的距离，而且能够告诉
 如上千个分布的重心[Cuturi 和Doucet 2014]。此外，有一部分工作[Convolution...]利用迭代标度方法解决熵正则化输运和相关问题的效率[Cu-turi 2013;Benamou等2015]。通过在连续语言中提出正则化传输，
 并将这些算法的效率与曲面和图像等领域的离散化相结合，这种变化不仅仅是符号上的，而是带来了更快的迭代图像上的高斯核与表面的热核相连接；这些核可以在不预先计算成对距离矩阵的情况下进行计算。
 
-\subsection{图像处理OT方法}
+\subsection{OT方法}
 
-预处理，
+OT理论同样可以在图像匹配的前置处理和后置处理发挥作用。高精度点云配准任务[Accurate Point Cloud Registration with Robust Optimal Transport]，我们可以把这个复杂任务描述为两个问题：
+(1) 如何寻找source和target的对应关系；
+(2) 如何利用这个对应关系求解特定的变换。
+对于(1)隐性地利用到了相似性的概念，直观来说就是特征匹配：用source的点去匹配target中的点，并计算他们的特征相似度。这里可以引入Entropic和unbalanced形式下的OT，文献中称为RobOT，并引入
+Weighted RobOT Matching，具体是通过计算target set 在$\pi_ij$加权下的barycenter，得到加权的目标位置。到这里为止，我们简单的描述了如何利用RobOT 直接求解配准问题。
+没有引入其他的regularization 项，但这种解决方案并不是完美的。如下例子目标是把彩色月亮匹配到蓝色月亮上去，我们简单的采用xyz作为每一个点的特征。虽然形状匹配的很好，但很明显它的拓扑结构乱了。
+这是因为RobOT本身并没有regularize transformation, 这个在有较大rotation 的情况下非常明显。因为我们还加入了非deep learning based 前置预处理模块和后置finetune 模块。
+这两个模块都是基于RobOT所以速度在毫秒级，并不影响整体的速度。总体而言，我们用了一个预处理模块（optimiatzion-based）， deep non-parametric 模块（支持多种deformation 
+model，deep-learning based), 后处理模块（optimization-baed) 的三明治结构。我们称这个方法为 Deep-RobOT(D-RobOT)
 
-后处理，
+至于为什么这么设计呢。三个模块对应三个原因
+1）为什么加入预处理，一般而言大部分non-parametric模型都是针对与局部形变设计的regularization，需要预先移除全局translation，rotation, shear 和 scale。
+2）为什么采用non-parametric， 局部形变的处理需要non-parametric 模型，另外通过任务类型可以选择相应的模型， 像场景流这类型小形变任务，control point based spline model 能求解平滑的流场，
+对比full resolution 的位移场，spline 的结果一般更平滑， 另外control point 的引入可以大大降低计算内存消耗。
+3）为什么采用 后处理， 这是因为不要过分的依赖深度模型，很多时候模型可能并不会给出完美的结果，这时候后处理可以修正模型误差。
+
+除了上述例子之外，把OT方法用在匹配任务的前置或后置处理的例子还有很多。其中一个最为经典的例子便是\cite{ma2017robust}，利用OMT-Map实现一个区域保持映射，将源和目标映射到一个单位平面圆盘上，
+而不会产生大面积失真。然后将表面配准问题转化为两个平面圆盘之间的地标匹配T-Map，使映射在整个域上具有一致的形象失真，同时使最大形象失真最小。
 
 \subsection{OT匹配算法}
 
