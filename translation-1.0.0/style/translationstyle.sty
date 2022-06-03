@@ -26,6 +26,7 @@
 \RequirePackage{fontspec}[2017/01/20] % 字体控制宏包，需要使用xelatex编译
 \RequirePackage{amsmath} 
 \RequirePackage{unicode-math}
+\usepackage{amsthm,amsfonts}
 %\RequirePackage{calc} % 数学
 \RequirePackage{siunitx}
 \RequirePackage{fancyhdr}
@@ -43,7 +44,8 @@
 \RequirePackage{metalogo}
 \RequirePackage[tightLists=false]{markdown}
 \RequirePackage{setspace} % 行间距包
-\RequirePackage{caption} % 定义表格的对齐方式，默认是中间
+\RequirePackage{caption} % 定义表格的标题，默认是中间
+\RequirePackage{bicaption}
 \RequirePackage{multirow} % 表格跨行
 \RequirePackage{booktabs} % 表格
 \RequirePackage{pdfpages} % 插入pdf
@@ -119,15 +121,15 @@
 
 %----------------------------------------------------------------------------
 % 数学的自定义
-\newtheorem{theorem}{定理}[section]
+\newtheorem{theorem}{\indent 定理}[section]
 
-\newtheorem{definition}{定义}[section]
+\newtheorem{definition}{\indent 定义}[section]
 
-\newtheorem{corollary}{推论}[section]
+\newtheorem{corollary}{\indent 推论}[section]
 
-\newtheorem{example}{例}[section]
+\newtheorem{example}{\indent 例}[section]
 
-\newtheorem{problem}{问题}[section]
+\newtheorem{problem}{\indent 问题}[section]
 
 % \titleformat{\section}
 %   {\heiti\sanhao\bfseries}  % format of title
